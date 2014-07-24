@@ -1,0 +1,9 @@
+<h2> Your posts <h2>
+
+<ul>
+	<% blogs.each(function (blog) { %>
+			<li>
+			  <%= blog.escape('content') %>
+			</li>
+	<% }) %>
+</ul>
