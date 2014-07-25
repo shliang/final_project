@@ -10,8 +10,9 @@
 	<% blogs.each(function (blog) { %>
 			<li> 
 			  <a href="#/blogs/<%= blog.get('id')%>" > 
-			  <%= blog.escape('content') %>
+			  <%= blog.escape('title') %>
 				</a>
+				<%= blog.escape('content') %>
 			</li>
 	<% }) %>
 </ul>
