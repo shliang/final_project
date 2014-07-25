@@ -8,6 +8,10 @@ Blogger.Views.BlogsIndex = Backbone.View.extend({
 			this.render)
 	},
 	
+	events: {
+		"click button#create-blog" : "newBlog"
+	},
+	
 	render: function () {
 		var renderedContent = this.template({
 			blogs: this.collection
@@ -16,5 +20,13 @@ Blogger.Views.BlogsIndex = Backbone.View.extend({
 		this.$el.html(renderedContent);
 		
 		return this;
-	}
+	},
+	
+	newBlog: function (event) {
+		event.preventDefault()
+		var newView = new Blogger.Views.BlogsNew()
+		this.$("div.new-blog").html(newView.render().$el)
+	},
+	
+	
 })

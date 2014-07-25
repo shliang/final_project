@@ -1,7 +1,7 @@
 module Api
   class BlogsController < ApiController
     def create
-      @blog = current_user.blogs.create(blog_params)
+      @blog = current_user.blogs.new(blog_params)
       if @blog.save
         render json: @blog
       else
