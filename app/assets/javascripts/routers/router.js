@@ -2,8 +2,8 @@ Blogger.Routers.Router = Backbone.Router.extend({
 	
 	routes: {
 		'': "blogsIndex",
-		'blogs/new' : "blogsCreate",
-		"blogs/:id" : "blogShow"
+		'blogs/new' : "blogsNew",
+		"blogs/:id" : "blogsShow"
 	},
 	
 	blogsIndex: function () {
@@ -16,18 +16,24 @@ Blogger.Routers.Router = Backbone.Router.extend({
 		this._swapView(view)
 	},
 	
-	blogsCreate: function () {
-		
+	blogsNew: function () {
+		var view = new Blogger.Views.BlogsNew()
+		this._swapView(view)
 	},
 	
 	blogsShow: function (id) {
+		var blog = Blogger.Collections.blogs.getOrFetch(id)
+    var view  = new Blogger.Views.BlogsShow({
+      model: blog
+    });
 		
+		this._swapView(view)
 	},
 	
 	_swapView: function (view) {
 		this.currentView && this.currentView.remove();
 		this.currentView = view;
-		$('#main').html(view.render().$el)
+		$('#content').html(view.render().$el)
 	}
 	
 	

@@ -6,10 +6,5 @@ window.Blogger = {
   initialize: function() {
 		new Blogger.Routers.Router();
 		Backbone.history.start();
-   
   }
 };
-
-$(document).ready(function(){
-  Blogger.initialize();
-});

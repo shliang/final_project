@@ -1,9 +1,13 @@
-<h2> Your posts <h2>
+<h2> Your posts </h2>
+
+<a href="#/blogs/new"> New Post </a>
 
 <ul>
 	<% blogs.each(function (blog) { %>
-			<li>
+			<li> 
+			  <a href="#/blogs/<%= blog.get('id')%>" > 
 			  <%= blog.escape('content') %>
+				</a>
 			</li>
 	<% }) %>
 </ul>
