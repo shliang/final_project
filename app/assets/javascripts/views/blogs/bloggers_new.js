@@ -17,10 +17,7 @@ Blogger.Views.BlogsNew = Backbone.View.extend({
 	
 	submit: function (event) {
 		event.preventDefault();
-		// var params = $(event.currentTarget).serializeJSON()[:blog];
-		var content = $("#post_content").val();
-		var title = $("#post_title").val();
-		var params = {title: title, content: content};
+		var params = $(event.currentTarget).serializeJSON()["blog"];
 		var newBlog = new Blogger.Models.Blog(params);
 		newBlog.save({},
 			{success: function () { 

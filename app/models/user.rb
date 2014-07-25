@@ -15,6 +15,24 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
   
+  has_many(
+    :followees,
+    through: :user_follows, 
+    source: :followee
+  )
+  
+  has_many(
+    :user_follows,
+    class_name: "UserFollow",
+    foreign_key: :follower_id,
+    primary_key: :id
+  )
+  
+  def is_already_following?(followee) #followee is an object
+    user.followees.include?(followee)
+  end
+  
+  
   def password=(plain_password)
     @password = plain_password
     self.digested_password = BCrypt::Password.create(plain_password)

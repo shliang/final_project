@@ -4,15 +4,13 @@ Blogger::Application.routes.draw do
   
   namespace :api, defaults: { format: :json } do
     resources :blogs, only: [:index, :create, :destroy, :show]
+    resources :users, only: [:index] do
+      get :recommended, on: :collection
+    end
+    resources :userfollows, only: [:create, :destroy]
   end
   
-  resources :users, only: [:new, :create, :show, :index]
+  resources :users, only: [:new, :create, :show]
   resource :session, only: [:new, :create, :destroy]
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  
 end
