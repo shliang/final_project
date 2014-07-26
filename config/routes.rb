@@ -3,7 +3,7 @@ Blogger::Application.routes.draw do
   root to: "root#root"
   
   namespace :api, defaults: { format: :json } do
-    resources :blogs, only: [:index, :create, :destroy, :show]
+    resources :blogs, only: [:index, :create, :update, :destroy, :show]
     resources :users, only: [:index] do
       get :recommended, on: :collection
     end

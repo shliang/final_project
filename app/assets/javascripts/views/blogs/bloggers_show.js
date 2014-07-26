@@ -3,6 +3,7 @@ Blogger.Views.BlogsShow = Backbone.View.extend({
 	
 	events: {
 		"click button.destroy": "destroyBlog",
+		"click button.edit" : "editBlog"
 	},
 	
 	initialize: function () {
@@ -24,5 +25,12 @@ Blogger.Views.BlogsShow = Backbone.View.extend({
 		
 		return this
 	},
+	
+	editBlog: function () {
+		var editView = new Blogger.Views.BlogsEdit ({
+			model: this.model
+		})
+		this.$(".post-show-place").html(editView.render().$el)
+	}
 	
 })

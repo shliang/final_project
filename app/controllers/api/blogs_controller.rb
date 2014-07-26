@@ -37,9 +37,9 @@ module Api
       unless @blog
         render json: ["You aren't the author of this post"], status: 403
       end
-
+      
       if @blog.update_attributes(blog_params)
-        render @blog
+        render json: @blog
       else
         render json: @blog.errors.full_messages, status: :unprocessable_entity
       end

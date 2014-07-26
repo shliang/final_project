@@ -13,3 +13,7 @@ Blogger.Collections.Users = Backbone.Collection.extend({
 	url: "/api/users",
 	model: Blogger.Models.User
 })
+
+Blogger.Collections.users = new Blogger.Collections.Users();
+
+Blogger.Collections.recommendedusers = new Blogger.Collections.RecommendedUsers()
