@@ -2,8 +2,8 @@ Blogger.Views.FollowButton = Backbone.View.extend({
 	template: JST["buttons/show"],
 	
 	events: {
-		"click button.unfollow" : "unfollow",
-		"click button.new-follow" : "follow"
+		"click button.unfollowing" : "unfollow",
+		"click button.new-following" : "follow"
 	},
 	
 	initialize: function (options) {
@@ -26,7 +26,7 @@ Blogger.Views.FollowButton = Backbone.View.extend({
 		this.following.destroy()
 	},
 	
-	follow: function () {
+	follow: function (event) {
 		var view = this;
 		event.preventDefault()
 		var followeeID = $(event.target).data("id")

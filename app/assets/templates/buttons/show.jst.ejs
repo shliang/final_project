@@ -1,8 +1,8 @@
 <li> 
-<%= user.escape("username")%>
+<a href="#/users/<%= user.id %>/posts"> <%= user.escape("username")%> </a>
 <% if (follow === true) { %>
-<button class="unfollow">Unfollow</button>
+<button class="unfollowing" data-id="<%=user.id%>">Unfollow</button>
 <% } else { %>
-<button class="new-follow" data-id="<%=user.id%>">Follow</button>
+<button class="new-following" data-id="<%=user.id%>">Follow</button>
 <% } %>
 </li>
