@@ -5,7 +5,7 @@ module Api
       render json: @users  
     end
     
-    def recommended
+    def userfollows
       @users = User.find_by_sql([<<-SQL, current_user.id, current_user.id])
       SELECT users.*
       FROM users

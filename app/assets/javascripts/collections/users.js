@@ -4,7 +4,7 @@
 // when you fetch this collection you'll get users you don't follow.
 
 Blogger.Collections.RecommendedUsers = Backbone.Collection.extend({
-	url: "/api/users/recommended",
+	url: "/api/users//userfollows",
 	model: Blogger.Models.User
 })
 

@@ -16,6 +16,7 @@
 //= require underscore
 //= require backbone
 //= require blogger
+//= require_tree ./util
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

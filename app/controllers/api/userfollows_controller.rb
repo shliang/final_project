@@ -1,7 +1,8 @@
 module Api
-  class UserFollowsController < ApiController
+  class UserfollowsController < ApiController
     def create
       @user_follow = UserFollow.new(user_follow_params)
+      @user_follow.follower_id = current_user.id
       if @user_follow.save
         render json: @user_follow
       else
@@ -9,6 +10,15 @@ module Api
       end
     end
     
+    
+    def show
+      @user_follow = UserFollow.find(params[:id])
+      if @user_follow
+        render json: @user_follow
+      else
+        render json: ["Not found"], status: 403
+      end
+    end
     
     def destroy
       @user_follow = UserFollow.find(params[:id])
@@ -21,10 +31,10 @@ module Api
       
     end
     
-    private:
+    private
     
     def user_follow_params
-      params.require(:user_follow).permit(:follower_id, :followee_id)
+      params.permit(:followee_id)
     end
     
   end

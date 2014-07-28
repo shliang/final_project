@@ -1,4 +1,4 @@
-Blogger.Views.BlogsIndex = Backbone.View.extend({
+Blogger.Views.BlogsIndex = Backbone.CompositeView.extend({
 	template: JST["blogs/index"],
 	
 	initialize: function () {
@@ -18,15 +18,26 @@ Blogger.Views.BlogsIndex = Backbone.View.extend({
 		})
 		
 		this.$el.html(renderedContent);
+		this.userFollow();
 		
 		return this;
+	},
+	
+	
+	userFollow: function () {
+		Blogger.Collections.recommendedusers.fetch();
+		var userFollowView = new Blogger.Views.RecommendedIndex({
+			collection: Blogger.Collections.recommendedusers
+		});
+		
+		this.addSubview('div.user-follows', userFollowView)
 	},
 	
 	newBlog: function (event) {
 		event.preventDefault()
 		var newView = new Blogger.Views.BlogsNew()
-		this.$("div.new-blog").html(newView.render().$el)
-	},
+		this.addSubview("div.new-blog",newView)
+	}
 	
 	
 })

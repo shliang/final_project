@@ -1,0 +1,8 @@
+<li> 
+<%= user.escape("username")%>
+<% if (follow === true) { %>
+<button class="unfollow">Unfollow</button>
+<% } else { %>
+<button class="new-follow" data-id="<%=user.id%>">Follow</button>
+<% } %>
+</li>
