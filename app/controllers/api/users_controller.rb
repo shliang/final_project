@@ -2,7 +2,7 @@ module Api
   class UsersController < ApiController
     def index
       @users = User.all
-      render json: @users
+      render "user/index"
     end
     
     def userfollows
@@ -19,12 +19,13 @@ module Api
       SQL
       
       @users = @users.shuffle.take(10)
-      render json: @users
+      render "user/index"
     end
     
     def show
       @user = User.find(params[:id])
-      render json: @user, include: :posts
+      @posts = @user.posts
+      render "user/show"
     end
   end
 end
