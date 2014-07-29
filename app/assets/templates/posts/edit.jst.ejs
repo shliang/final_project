@@ -1,0 +1,10 @@
+<form class="submitting">
+  <label> Post Title </label>
+	<input type="text" name="post[title]" id="post_title", value="<%= post.escape("title") %>">
+	
+	<br>
+	<label> Post Body </label>
+	<textarea rows="4" cols="100" name="post[content]" id="post_content"> <%= post.escape("content") %> </textarea>
+  <button> Save </button>
+
+</form>

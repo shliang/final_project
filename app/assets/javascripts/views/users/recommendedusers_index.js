@@ -13,7 +13,6 @@ Blogger.Views.RecommendedIndex = Backbone.CompositeView.extend({
 	},
 	
 	render: function () {
-		debugger
 		var renderedContent = this.template({
 			users : this.collection,
 			follow: false

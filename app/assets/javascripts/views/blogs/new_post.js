@@ -1,5 +1,5 @@
 Blogger.Views.NewPost = Backbone.View.extend({
-	template: JST["blogs/new"],
+	template: JST["posts/new"],
 	
 	events: {
 		"submit form": "submit"
@@ -7,7 +7,7 @@ Blogger.Views.NewPost = Backbone.View.extend({
 	
 	render: function () {
 		var renderedContent = this.template({
-			blog: this.model
+			post: this.model
 		})
 		
 		this.$el.html(renderedContent)
@@ -17,14 +17,14 @@ Blogger.Views.NewPost = Backbone.View.extend({
 	
 	submit: function (event) {
 		event.preventDefault();
-		var params = $(event.currentTarget).serializeJSON()["blog"];
-		var newBlog = new Blogger.Models.Blog(params);
-		newBlog.save({},
-			{success: function () { 
-				Blogger.Collections.blogs.add(newBlog)
-				Backbone.history.navigate("", {trigger: true})
-			}}
-		)
+		var params = $(event.currentTarget).serializeJSON()["post"];
+		var newPost = new Blogger.Models.Post(params);
+		newPost.save({}, { 
+			success: function () { 
+				Blogger.Collections.posts.add(newPost)
+				Backbone.history.navigate("", { trigger: true })
+			}
+		})
 	}
 	
 })

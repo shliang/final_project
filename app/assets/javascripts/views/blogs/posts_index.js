@@ -1,5 +1,5 @@
 Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
-	template: JST["blogs/index"],
+	template: JST["posts/index"],
 	
 	initialize: function () {
 		this.listenTo(

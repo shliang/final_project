@@ -1,16 +1,16 @@
 Blogger.Views.ShowPost = Backbone.View.extend({
-	template: JST["blogs/show"],
+	template: JST["posts/show"],
 	
 	events: {
-		"click button.destroy": "destroyBlog",
-		"click button.edit" : "editBlog"
+		"click button.destroy": "destroyPost",
+		"click button.edit" : "editPost"
 	},
 	
 	initialize: function () {
 		this.listenTo(this.model, "sync", this.render);
 	},
 	
-	destroyBlog: function (event) {
+	destroyPost: function (event) {
 		event.preventDefault();
 		this.model.destroy();
 		Backbone.history.navigate("", {trigger: true})
@@ -26,8 +26,8 @@ Blogger.Views.ShowPost = Backbone.View.extend({
 		return this
 	},
 	
-	editBlog: function () {
-		var editView = new Blogger.Views.BlogsEdit ({
+	editPost: function () {
+		var editView = new Blogger.Views.EditPost({
 			model: this.model
 		})
 		this.$(".post-show-place").html(editView.render().$el)

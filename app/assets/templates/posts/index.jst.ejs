@@ -1,0 +1,21 @@
+<h2> Your posts </2>
+
+
+<div class="new-post">
+<button id="create-post"> New Post </button>
+</div>
+
+<div class="user-follows"> </div>
+
+<ul>
+	<% posts.each(function (post) { %>
+			<li> 
+			  <a href="#/posts/<%= post.get('id')%>" > 
+			  <%= post.escape('title') %>
+				</a>
+				<%= post.escape('content') %>
+			</li>
+	<% }) %>
+</ul>
+
+<a href="#/users" > Users </a> 

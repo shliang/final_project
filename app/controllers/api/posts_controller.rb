@@ -17,28 +17,21 @@ module Api
     
     def destroy
       @post = current_user.posts.find(params[:id])
-      # might have to account for user deleting another user's post
-      
       @post.destroy if @post
       render json: {}
     end
     
     def show
-      # @post = current_user.posts.find(params[:id])
-      @post = Blog.find(params[:id])
+      @post = Post.find(params[:id])
       render json: @post
     end
     
     def update
-      @post = current_user.posts.find(params[:id])
+      @post = Post.find(params[:id])
 
-      #first condition is to see if the post user trying to update belongs to user
-
-      unless @post
+      if @post.owner_id != current_user.id
         render json: ["You aren't the author of this post"], status: 403
-      end
-      
-      if @post.update_attributes(post_params)
+      elsif @post.update_attributes(post_params)
         render json: @post
       else
         render json: @post.errors.full_messages, status: :unprocessable_entity

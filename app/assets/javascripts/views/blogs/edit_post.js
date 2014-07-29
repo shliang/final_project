@@ -1,20 +1,20 @@
 Blogger.Views.EditPost = Backbone.View.extend({
-	template: JST["blogs/edit"],
+	template: JST["posts/edit"],
 	
 	events: {
-		"submit form.submitting": "editBlog"
+		"submit form.submitting": "editPost"
 	},
 	
-	editBlog: function (event) {
+	editPost: function (event) {
 		event.preventDefault();
-		params = $(event.currentTarget).serializeJSON()["blog"]
+		params = $(event.currentTarget).serializeJSON()["post"]
 		this.model.set(params)
 		this.model.save()
 	},
 	
 	render: function () {
 		var renderedContent = this.template({
-			blog: this.model
+			post: this.model
 		})
 		
 		this.$el.html(renderedContent);
