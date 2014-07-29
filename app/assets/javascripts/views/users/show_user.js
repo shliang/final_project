@@ -6,7 +6,6 @@ Blogger.Views.ShowUser = Backbone.CompositeView.extend({
 	},
 	
 	render: function () {
-		debugger
 		var renderedContent = this.template({
 			user: this.model
 		});
