@@ -1,4 +1,4 @@
-Blogger.Views.BlogsShow = Backbone.View.extend({
+Blogger.Views.ShowPost = Backbone.View.extend({
 	template: JST["blogs/show"],
 	
 	events: {

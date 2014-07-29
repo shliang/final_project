@@ -2,31 +2,31 @@ Blogger.Routers.Router = Backbone.Router.extend({
 	
 	routes: {
 		'': "postsIndex",
-		'blogs/new' : "blogsNew",
-		"blogs/:id" : "blogsShow",
-		"users" : "usersIndex",
-		"recommendedusers" : "recommendedIndex"
+		'posts/new' : "newPost",
+		'users/:id': 'userShow',
+		'posts/:id': 'postShow',
+		'posts/:id/edit': 'editPost'
+		// "recommendedusers" : "recommendedIndex"
 	},
 	
 	postsIndex: function () {
 		
-		
 		var view = new Blogger.Views.BlogsIndex({
-			collection: Blogger.Collections.blogs
+			collection: Blogger.Collections.posts
 		});
 		
 		this._swapView(view)
 	},
 	
-	blogsNew: function () {
+	postsNew: function () {
 		var view = new Blogger.Views.BlogsNew()
 		this._swapView(view)
 	},
 	
-	blogsShow: function (id) {
-		var blog = Blogger.Collections.blogs.getOrFetch(id)
+	postShow: function (id) {
+		var post = Blogger.Collections.posts.getOrFetch(id)
     var view  = new Blogger.Views.BlogsShow({
-      model: blog
+      model: post
     });
 		
 		this._swapView(view)

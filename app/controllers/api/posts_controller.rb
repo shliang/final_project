@@ -10,13 +10,13 @@ module Api
     end
     
     def index
-      @user = User.find(params[:user_id])
-      render json: @user, include: :posts  
+      @posts = Post.joins(:user).where('posts.owner_id IN (?)', 
+            ([current_user.id] + current_user.followees.pluck(:id)))
+      render json: @posts, include: :user
     end
     
     def destroy
       @post = current_user.posts.find(params[:id])
-      
       # might have to account for user deleting another user's post
       
       @post.destroy if @post

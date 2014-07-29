@@ -1,4 +1,4 @@
-Blogger.Views.BlogsEdit = Backbone.View.extend({
+Blogger.Views.EditPost = Backbone.View.extend({
 	template: JST["blogs/edit"],
 	
 	events: {

@@ -32,7 +32,6 @@ class User < ActiveRecord::Base
     user.followees.include?(followee)
   end
   
-  
   def password=(plain_password)
     @password = plain_password
     self.digested_password = BCrypt::Password.create(plain_password)

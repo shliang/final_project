@@ -16,4 +16,4 @@ Blogger.Collections.Users = Backbone.Collection.extend({
 
 Blogger.Collections.users = new Blogger.Collections.Users();
 
-Blogger.Collections.recommendedusers = new Blogger.Collections.RecommendedUsers()
+Blogger.Collections.recommendedUsers = new Blogger.Collections.RecommendedUsers()

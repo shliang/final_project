@@ -14,14 +14,6 @@ class UsersController < ApplicationController
     end
   end
   
-  def show
-    @user = current_user
-    
-    if @user.nil?
-      redirect_to new_session_url
-    end
-  end
-  
   private
   
   def user_params

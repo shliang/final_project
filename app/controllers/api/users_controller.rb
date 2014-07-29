@@ -21,5 +21,10 @@ module Api
       @users = @users.shuffle.take(10)
       render json: @users
     end
+    
+    def show
+      @user = User.find(params[:id])
+      render json: @user, include: :posts
+    end
   end
 end

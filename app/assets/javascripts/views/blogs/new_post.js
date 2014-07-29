@@ -1,4 +1,4 @@
-Blogger.Views.BlogsNew = Backbone.View.extend({
+Blogger.Views.NewPost = Backbone.View.extend({
 	template: JST["blogs/new"],
 	
 	events: {
