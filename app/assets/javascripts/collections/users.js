@@ -11,7 +11,21 @@ Blogger.Collections.RecommendedUsers = Backbone.Collection.extend({
 
 Blogger.Collections.Users = Backbone.Collection.extend({
 	url: "/api/users",
-	model: Blogger.Models.User
+	model: Blogger.Models.User,
+	
+	getOrFetch: function (id) {
+		var user = this.get(id);
+		if (!user) {
+			user = new this.model({id: id});
+			user.fetch({
+				success: function(){
+					this.add(user)
+				}.bind(this)
+			});
+		} 
+		return user;
+	}
+	
 })
 
 Blogger.Collections.users = new Blogger.Collections.Users();

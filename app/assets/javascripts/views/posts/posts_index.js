@@ -33,10 +33,10 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 		this.addSubview('div.user-follows', userFollowView)
 	},
 	
-	newBlog: function (event) {
+	newPost: function (event) {
 		event.preventDefault()
 		var newView = new Blogger.Views.NewPost()
-		this.addSubview("div.new-blog",newView)
+		this.addSubview("div.new-post",newView)
 	}
 	
 	

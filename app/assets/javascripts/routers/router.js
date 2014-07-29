@@ -5,7 +5,7 @@ Blogger.Routers.Router = Backbone.Router.extend({
 		'posts/new' : "newPost",
 		'users/:id': 'userShow',
 		'posts/:id': 'showPost',
-		'posts/:id/edit': 'editPost'
+		"users" : "usersIndex"
 		// "recommendedusers" : "recommendedIndex"
 	},
 	
@@ -42,6 +42,17 @@ Blogger.Routers.Router = Backbone.Router.extend({
 		
 		this._swapView(view)
 	},
+	
+	userShow: function (id) {
+		var user = Blogger.Collections.users.getOrFetch(id)
+		
+		var view = new Blogger.Views.ShowUser({
+			model: user
+		})
+		
+		this._swapView(view)
+	},
+	
 	
 	recommendedIndex: function () {
 		Blogger.Collections.recommendedusers.fetch()
