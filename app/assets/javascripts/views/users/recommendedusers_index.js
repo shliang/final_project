@@ -1,7 +1,7 @@
 Blogger.Views.RecommendedIndex = Backbone.CompositeView.extend({
 	template: JST["users/userIndex"],
 	
-	initialize: function () {
+	initialize: function (options) {
 		this.listenTo(
 			this.collection,
 			"sync",
@@ -13,6 +13,7 @@ Blogger.Views.RecommendedIndex = Backbone.CompositeView.extend({
 	},
 	
 	render: function () {
+		debugger
 		var renderedContent = this.template({
 			users : this.collection,
 			follow: false
@@ -32,7 +33,6 @@ Blogger.Views.RecommendedIndex = Backbone.CompositeView.extend({
 		newFollow.save({
 			success: function () {
 				Blogger.Collections.userFollows.add(newFollow)
-				
 			}
 		})
 	}

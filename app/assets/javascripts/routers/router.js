@@ -1,14 +1,14 @@
 Blogger.Routers.Router = Backbone.Router.extend({
 	
 	routes: {
-		'': "blogsIndex",
+		'': "postsIndex",
 		'blogs/new' : "blogsNew",
 		"blogs/:id" : "blogsShow",
 		"users" : "usersIndex",
 		"recommendedusers" : "recommendedIndex"
 	},
 	
-	blogsIndex: function () {
+	postsIndex: function () {
 		Blogger.Collections.blogs.fetch()
 		
 		var view = new Blogger.Views.BlogsIndex({

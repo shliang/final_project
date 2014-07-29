@@ -10,8 +10,8 @@ module Api
     end
     
     def index
-      @blogs = current_user.blogs
-      render json: @blogs  
+      @user = User.find(params[:user_id])
+      render json: @user, include: :blogs  
     end
     
     def destroy
