@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   
   
   has_many(
-    :blogs,
-    class_name: "Blog",
+    :posts,
+    class_name: "Post",
     foreign_key: :owner_id,
     primary_key: :id
   )

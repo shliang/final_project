@@ -1,4 +1,4 @@
-class Blog < ActiveRecord::Base
+class Post < ActiveRecord::Base
   validates :owner_id, :content, :title, presence: true
   
   belongs_to( 

@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725173729) do
+ActiveRecord::Schema.define(version: 20140729163823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "blogs", force: true do |t|
+  create_table "posts", force: true do |t|
     t.integer  "owner_id",   null: false
     t.text     "content",    null: false
     t.datetime "created_at"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140725173729) do
     t.string   "title",      null: false
   end
 
-  add_index "blogs", ["owner_id"], name: "index_blogs_on_owner_id", using: :btree
+  add_index "posts", ["owner_id"], name: "index_posts_on_owner_id", using: :btree
 
   create_table "user_follows", force: true do |t|
     t.integer  "follower_id", null: false
