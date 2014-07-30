@@ -10,6 +10,7 @@
 <ul>
 	<% posts.each(function (post) { %>
 			<li> 
+			  <%= post.get("user").username %>
 			  <a href="#/posts/<%= post.get('id')%>" > 
 			  <%= post.escape('title') %>
 				</a>

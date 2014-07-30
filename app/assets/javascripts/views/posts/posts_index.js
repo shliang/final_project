@@ -6,6 +6,11 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 			this.collection,
 			"sync",
 			this.render)
+			
+		this.listenTo(
+			Blogger.Collections.recommendedUsers, 
+			"sync", 
+			this.render)
 	},
 	
 	events: {
@@ -25,7 +30,7 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 	
 	
 	userFollow: function () {
-		Blogger.Collections.recommendedUsers.fetch();
+		
 		var userFollowView = new Blogger.Views.RecommendedIndex({
 			collection: Blogger.Collections.recommendedUsers
 		});

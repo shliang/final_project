@@ -24,6 +24,7 @@ module Api
     
     def show
       @post = Post.find(params[:id])
+      @user = @post.user
       render "posts/show"
     end
     

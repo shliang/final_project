@@ -1,5 +1,11 @@
 module Api
   class UserfollowsController < ApiController
+    def index
+      @user_follows = UserFollow.all
+      render json: @user_follows
+      
+    end
+    
     def create
       @user_follow = UserFollow.new(user_follow_params)
       @user_follow.follower_id = current_user.id

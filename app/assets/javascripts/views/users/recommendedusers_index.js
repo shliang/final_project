@@ -19,8 +19,22 @@ Blogger.Views.RecommendedIndex = Backbone.CompositeView.extend({
 		});
 		
 		this.$el.html(renderedContent);
+		this.addRecommendedUsers()
 		
 		return this;
+	},
+	
+	addRecommendedUsers: function () {
+		var view = this;
+		view.$("ul.user").empty()
+		_(view.collection.models).each(function (user) {
+			var followButtonView = new Blogger.Views.FollowButton({
+				model: user,
+				following: new Blogger.Models.UserFollow(),
+				follow: false
+			})
+		
+		view.addSubview("ul.user", followButtonView)})
 	},
 	
 	follow: function (event) {

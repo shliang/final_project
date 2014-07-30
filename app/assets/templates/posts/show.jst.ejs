@@ -1,12 +1,14 @@
 <div class="post-show-place">
-<h2> <%= blog.escape('title') %></h2>
-<h2> <%= blog.escape('content') %></h2>
-<button class="edit"> Edit Post </button>
-</div>
+<h2> <%= post.escape('title') %></h2>
+<h2> <%= post.escape('content') %></h2>
+<% if (user_id === current_user.id) { %>
+	<button class="edit"> Edit Post </button>
+	</div>
 
-<button class="destroy">Destroy</button>
+	<button class="destroy">Destroy</button>
 
-<br>
+	<br>
+<% } %>
 
 <a href=""> Back to Posts </a>
 

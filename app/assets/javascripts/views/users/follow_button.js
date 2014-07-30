@@ -2,8 +2,8 @@ Blogger.Views.FollowButton = Backbone.View.extend({
 	template: JST["buttons/show"],
 	
 	events: {
-		"click button.unfollowing" : "unfollow",
-		"click button.new-following" : "follow"
+		"click button.unfollowing" : "be_unfollow",
+		"click button.new-following" : "be_follow"
 	},
 	
 	initialize: function (options) {
@@ -16,24 +16,28 @@ Blogger.Views.FollowButton = Backbone.View.extend({
 			user: this.model,
 			follow: this.follow,
 		})
-		
 		this.$el.html(renderedContent);
 		return this;	
 	},
 	
-	unfollow: function (event) {
+	be_unfollow: function (event) {
+		var view = this;
 		event.preventDefault();
-		this.following.destroy()
+		this.following.destroy({
+			success: function () {
+				view.follow = false;
+				view.render()
+			}
+		})
 	},
 	
-	follow: function (event) {
+	be_follow: function (event) {
 		var view = this;
 		event.preventDefault()
 		var followeeID = $(event.target).data("id")
-		var newFollow = new Blogger.Models.UserFollow({
-			followee_id: followeeID
-		});
-		newFollow.save({
+		var newFollow = this.following;
+		newFollow.set({follower_id: current_user.id, followee_id: followeeID})
+		newFollow.save({}, {
 			success: function () {
 				Blogger.Collections.userFollows.add(newFollow)
 		    view.follow = true;

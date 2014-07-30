@@ -11,7 +11,7 @@ Blogger.Routers.Router = Backbone.Router.extend({
 	
 	postsIndex: function () {
 		Blogger.Collections.posts.fetch()
-		
+		Blogger.Collections.recommendedUsers.fetch();
 		var view = new Blogger.Views.PostsIndex({
 			collection: Blogger.Collections.posts
 		});
@@ -36,6 +36,7 @@ Blogger.Routers.Router = Backbone.Router.extend({
 	
 	usersIndex: function () {
 		Blogger.Collections.users.fetch()
+		Blogger.Collections.userFollows.fetch()
 		
 		var view = new Blogger.Views.UsersIndex({
 			collection: Blogger.Collections.users

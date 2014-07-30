@@ -6,10 +6,12 @@ Blogger.Views.UsersIndex = Backbone.CompositeView.extend({
 			this.collection,
 			"sync",
 			this.render)
-	},
-	
-	events: {
-		"click button.new-follow": "follow"
+			
+		this.listenTo(
+			Blogger.Collections.userFollows,
+			"sync",
+			this.render)
+
 	},
 	
 	render: function () {
@@ -28,17 +30,18 @@ Blogger.Views.UsersIndex = Backbone.CompositeView.extend({
 	
 	renderUsers: function() {
 		var view = this;
-		_(this.collection.models).each(function (user) {
-			var following = Blogger.Collections.userFollows.findWhere({ followee_id: user.id });
-			
-			var followButtonView = new Blogger.Views.FollowButton({
-				model: user,
-				following: following,
-				follow: following !== undefined
-			})
-			
-			view.addSubview("ul.user", followButtonView);
-		});
-	}
+		view.$("ul.user").empty()
+		_(view.collection.models).each(function (user) {
+			if (user.id !== current_user.id) {
+				var following = Blogger.Collections.userFollows.findWhere({ follower_id: current_user.id, followee_id: user.id });
+				var followButtonView = new Blogger.Views.FollowButton({
+					model: user,
+					following: following,
+					follow: following !== undefined
+				})
 	
+			view.addSubview("ul.user", followButtonView)}
+		})
+		
+	}
 })

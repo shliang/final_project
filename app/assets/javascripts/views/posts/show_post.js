@@ -18,7 +18,8 @@ Blogger.Views.ShowPost = Backbone.View.extend({
 	
 	render: function () {
 		var renderedContent = this.template({
-			blog: this.model
+			post: this.model,
+			user_id: this.model.get("user") && this.model.get("user").id
 		})
 		
 		this.$el.html(renderedContent);
