@@ -3,6 +3,7 @@ module Api
     def create
       @post = current_user.posts.new(post_params)
       if @post.save
+        @user = current_user
         render "posts/show"
       else
         render json: @post.errors.full_messages, status: :unprocessable_entity

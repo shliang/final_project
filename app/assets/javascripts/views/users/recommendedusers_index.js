@@ -1,5 +1,5 @@
 Blogger.Views.RecommendedIndex = Backbone.CompositeView.extend({
-	template: JST["users/userIndex"],
+	template: JST["users/rec_userindex"],
 	
 	initialize: function (options) {
 		this.listenTo(

@@ -14,6 +14,7 @@
 //= require jquery.serializeJSON
 //= require jquery_ujs
 //= require underscore
+//= require bootstrap
 //= require backbone
 //= require blogger
 //= require_tree ./util

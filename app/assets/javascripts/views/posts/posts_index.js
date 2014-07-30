@@ -20,6 +20,7 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 	render: function () {
 		var renderedContent = this.template({
 			posts: this.collection
+		  
 		})
 		
 		this.$el.html(renderedContent);
