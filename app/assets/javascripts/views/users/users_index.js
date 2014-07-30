@@ -23,10 +23,10 @@ Blogger.Views.UsersIndex = Backbone.CompositeView.extend({
 		return this;
 	},
 	
-	follow: function (event) {
-		event.preventDefault()
-		
-	},
+	// follow: function (event) {
+	// 	event.preventDefault()
+	//
+	// },
 	
 	renderUsers: function() {
 		var view = this;

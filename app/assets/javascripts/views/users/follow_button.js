@@ -35,7 +35,8 @@ Blogger.Views.FollowButton = Backbone.View.extend({
 		var view = this;
 		event.preventDefault()
 		var followeeID = $(event.target).data("id")
-		var newFollow = this.following;
+		// var newFollow = this.following;
+		var newFollow = new Blogger.Models.UserFollow()
 		newFollow.set({follower_id: current_user.id, followee_id: followeeID})
 		newFollow.save({}, {
 			success: function () {
