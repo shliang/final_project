@@ -1,12 +1,22 @@
 <h2> <%= user.escape("username") %> </h2>
 
-<ul>
+
+
+
+
 	<% user.posts().each(function(post) { %>
-	<li>
-	  <a href="#/posts/<%= post.id %>" > <%= post.escape("title") %> </a>
-	  <%= post.escape("content") %>
-	</li>
-	<% }) %>
-</ul>
+	<div class="panel panel-default">
+	  <div class="panel-body">
+			<h3>
+			  <a href="#/posts/<%= post.id %>" > <%= post.escape("title") %> </a>
+			</h3>
+			
+			<p>
+			  <%= post.escape("content") %>
+			</p>
+	  </div>
+	</div>
+<% }) %>
+
 
 <a href="#/users">Back to Users </a>

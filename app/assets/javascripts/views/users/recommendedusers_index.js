@@ -9,7 +9,7 @@ Blogger.Views.RecommendedIndex = Backbone.CompositeView.extend({
 	},
 	
 	events: {
-		"click button.new-follow": "follow"
+		"click button.new-follow": "follow",
 	},
 	
 	render: function () {
@@ -43,9 +43,10 @@ Blogger.Views.RecommendedIndex = Backbone.CompositeView.extend({
 		var newFollow = new Blogger.Models.UserFollow({
 			followee_id: followeeID
 		});
-		newFollow.save({
+		newFollow.save( {}, {
 			success: function () {
 				Blogger.Collections.userFollows.add(newFollow)
+				Backbone.history.navigate("", { trigger: true })
 			}
 		})
 	}

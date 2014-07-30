@@ -1,7 +1,7 @@
 Blogger.Views.UsersIndex = Backbone.CompositeView.extend({
 	template: JST["users/userIndex"],
 	
-	initialize: function () {
+	initialize: function (options) {
 		this.listenTo(
 			this.collection,
 			"sync",
@@ -42,6 +42,5 @@ Blogger.Views.UsersIndex = Backbone.CompositeView.extend({
 	
 			view.addSubview("ul.user", followButtonView)}
 		})
-		
 	}
 })

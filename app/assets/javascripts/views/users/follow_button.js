@@ -1,4 +1,6 @@
 Blogger.Views.FollowButton = Backbone.View.extend({
+	tagName: "ul",
+	className: "nav nav-pills nav-stacked",
 	template: JST["buttons/show"],
 	
 	events: {
@@ -23,6 +25,7 @@ Blogger.Views.FollowButton = Backbone.View.extend({
 	be_unfollow: function (event) {
 		var view = this;
 		event.preventDefault();
+		debugger
 		this.following.destroy({
 			success: function () {
 				view.follow = false;

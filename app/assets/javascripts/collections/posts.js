@@ -13,8 +13,12 @@ Blogger.Collections.Posts = Backbone.Collection.extend({
 			});
 		} 
 		return post;
-	}
+	},
 	
+	comparator: function (post) {
+		var date = new Date(post.get("created_at"))
+		return -date
+	}
 })
 
 Blogger.Collections.posts = new Blogger.Collections.Posts()

@@ -1,19 +1,41 @@
-<div class="new-post">
-<button id="create-post"> New Post </button>
+<div class='row'>
+  <div class="col-xs-12">
+	 	<div class="new-post">
+	   	<button id="create-post"> New Post </button>
+  	</div>
+	</div>
 </div>
 
-<div class="user-follows"> </div>
+<br>
 
-<ul>
-	<% posts.each(function (post) { %>
-			<li> 
-			  <%= post.get("user").username %>
-			  <a href="#/posts/<%= post.get('id')%>" > 
-			  <%= post.escape('title') %>
-				</a>
-				<%= post.escape('content') %>
-			</li>
-	<% }) %>
-</ul>
+<div class='row'>
 
-<a href="#/users" > Users </a> 
+	<div class="col-xs-10">
+
+
+		<% posts.each(function (post) { %>
+		<div class="panel panel-default">
+				<div class="panel-body">
+				  <h4> <%= post.get("user").username %> </h4>
+				  <h3> <a href="#/posts/<%= post.get('id')%>" > 
+				  <%= post.escape('title') %>
+					</a>
+					</h3>
+					<p> <%= post.escape('content') %> </p>
+				</div>
+			</div>
+		<% }) %>
+
+	</div>
+	
+	<div class="col-xs-2">
+		<div class="user-follows"> </div>
+	</div>
+
+</div>
+
+<div class='row'>
+  <div class="col-xs-3">
+		<a href="#/users" > Users </a> 
+	</div>
+</div>
