@@ -8,10 +8,6 @@ Blogger.Views.RecommendedIndex = Backbone.CompositeView.extend({
 			this.render)
 	},
 	
-	events: {
-		"click button.new-follow": "follow",
-	},
-	
 	render: function () {
 		var renderedContent = this.template({
 			users : this.collection,
@@ -35,19 +31,19 @@ Blogger.Views.RecommendedIndex = Backbone.CompositeView.extend({
 			})
 		
 		view.addSubview("ul.user", followButtonView)})
-	},
-	
-	follow: function (event) {
-		event.preventDefault()
-		var followeeID = $(event.target).data("id")
-		var newFollow = new Blogger.Models.UserFollow({
-			followee_id: followeeID
-		});
-		newFollow.save( {}, {
-			success: function () {
-				Blogger.Collections.userFollows.add(newFollow)
-				Backbone.history.navigate("", { trigger: true })
-			}
-		})
 	}
+	
+	// follow: function (event) {
+	// 	event.preventDefault()
+	// 	var followeeID = $(event.target).data("id")
+	// 	var newFollow = new Blogger.Models.UserFollow({
+	// 		followee_id: followeeID
+	// 	});
+	// 	newFollow.save( {}, {
+	// 		success: function () {
+	// 			Blogger.Collections.userFollows.add(newFollow)
+	// 			Backbone.history.navigate("", { trigger: true })
+	// 		}
+	// 	})
+	// }
 })

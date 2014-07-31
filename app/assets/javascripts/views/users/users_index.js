@@ -40,7 +40,7 @@ Blogger.Views.UsersIndex = Backbone.CompositeView.extend({
 					follow: following !== undefined
 				})
 	
-			view.addSubview("ul.user", followButtonView)}
+			view.addSubview("ul.user_all", followButtonView)}
 		})
 	}
 })
