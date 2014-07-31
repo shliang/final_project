@@ -2,7 +2,7 @@ Blogger.Views.UsersIndex = Backbone.CompositeView.extend({
 	template: JST["users/userIndex"],
 	
 	events: {
-		"mouseover ul.user_all" : "list_user"
+		"mouseover ul.user_all li a" : "list_user"
 	},
 	
 	initialize: function (options) {
@@ -19,8 +19,9 @@ Blogger.Views.UsersIndex = Backbone.CompositeView.extend({
 	},
 	
 	list_user: function(event) {
+		console.log(event.target.id)
 		if (event.target.id !== "button_text" || event.target.id !== "") {
-			debugger
+			// debugger
 			// var mousedUser = Blogger.Collections.users.findWhere({id: Number(event.target.id)})
 			var mousedUser = new Blogger.Models.User({id: Number(event.target.id)})
 			mousedUser.fetch()
