@@ -6,7 +6,6 @@ Blogger.Views.FollowButton = Backbone.View.extend({
 	events: {
 		"click button.unfollowing" : "be_unfollow",
 		"click button.new-following" : "be_follow",
-		"mouseover ul.user_all > ul.nav > li" : "display_ind_posts"
 	},
 	
 	initialize: function (options) {
@@ -52,10 +51,6 @@ Blogger.Views.FollowButton = Backbone.View.extend({
 				view.render()
 			}
 		})
-	},
-	
-	display_ind_posts: function() {
-		alert('hi')
 	}
 	
 })

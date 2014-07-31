@@ -22,7 +22,7 @@ Blogger.Views.NewPost = Backbone.View.extend({
 		newPost.save({}, { 
 			success: function () { 
 				Blogger.Collections.posts.add(newPost)
-				Backbone.history.navigate("", { trigger: true })
+				// Backbone.history.navigate("", { trigger: true })
 			}
 		})
 	}
