@@ -25,7 +25,6 @@ Blogger.Views.FollowButton = Backbone.View.extend({
 	be_unfollow: function (event) {
 		var view = this;
 		event.preventDefault();
-		debugger
 		this.following.destroy({
 			success: function () {
 				view.follow = false;
@@ -43,7 +42,11 @@ Blogger.Views.FollowButton = Backbone.View.extend({
 		newFollow.set({follower_id: current_user.id, followee_id: followeeID})
 		newFollow.save({}, {
 			success: function () {
+				var followed_model = 
+				  Blogger.Collections.recommendedUsers.where({id: newFollow.get("followee_id")});
+				Blogger.Collections.recommendedUsers.remove(followed_model)
 				Blogger.Collections.userFollows.add(newFollow)
+				
 		    view.follow = true;
 				view.render()
 			}

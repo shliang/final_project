@@ -24,3 +24,11 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+
+$(function () {
+	$(".demo-button").on("click", function (event) {
+		event.preventDefault();
+		
+		$("div.main-body").html($("div.hidden-sign-in-form-for-demo").show())
+	})
+})

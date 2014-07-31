@@ -20,7 +20,29 @@
   url('/assets/fonts/glyphicons-halflings-regular.woff') format('woff'),
   url('/assets/glyphicons-halflings-regular.ttf') format('truetype'),
   url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
-}
+};
 
-@import "bootstrap"
+@import "bootstrap";
 
+body {
+  background-color: #b0c4de;
+};
+
+.friendship_buttons {
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 20px 20px 5px #888888;
+};
+
+.user {
+	padding: 0;
+	color: SlateGrey;
+};
+
+#button_text {
+	color: SlateGrey;
+};
+
+.hidden-sign-in-form-for-demo {
+	display: none;
+};

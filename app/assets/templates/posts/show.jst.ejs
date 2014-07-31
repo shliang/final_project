@@ -1,15 +1,40 @@
+
+
+
 <div class="post-show-place">
-<h2> <%= post.escape('title') %></h2>
-<h2> <%= post.escape('content') %></h2>
-<% if (user_id === current_user.id) { %>
-	<button class="edit"> Edit Post </button>
+
+	<div class='row'>
+
+		<div class="col-xs-12">
+
+
+		  <div class="panel panel-default">
+				<div class="panel-body">
+					
+					<h2> <%= post.escape('title') %></h2>
+					<p> <%= post.escape('content') %></p>
+					
+				</div>
+			</div>
+		</div>
 	</div>
+			
+	<div class='row'>
+		<div class="col-xs-3">	
+			
+			<% if (user_id === current_user.id) { %>
+				<button class="edit btn btn-primary"> Edit Post </button>
 
-	<button class="destroy">Destroy</button>
+				<button class="destroy btn btn-danger">Destroy</button>
+			<% } %>
+		</div>
+	</div>
+</div>
 
-	<br>
-<% } %>
+<br>
 
-<a href=""> Back to Posts </a>
-
-
+<div class='row'>
+	<div class="col-xs-3">	
+		<a href=""> Back to Posts </a>
+	</div>
+</div>

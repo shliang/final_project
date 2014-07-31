@@ -11,17 +11,25 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 			Blogger.Collections.recommendedUsers, 
 			"sync", 
 			this.render)
+			
+			this.listenTo(
+				Blogger.Collections.userFollows,
+				"add",
+				this.reRendering)
 	},
 	
 	events: {
 		"click button#create-post" : "newPost"
 	},
 	
+	reRendering: function () {
+		Blogger.Collections.posts.fetch();
+	},
+	
 	render: function () {
 		var renderedContent = this.template({
 			posts: this.collection
 		})
-		
 		this.$el.html(renderedContent);
 		this.userFollow();
 		
