@@ -115,6 +115,6 @@ f.each_line do |line|
 end
 f.close
 
-User.each.posts.create!(title: ("Second post and my name is" + "#{newUser.username}"), content: random_words.shuffle.join(" "))
-User.each.posts.create!(title: ("Third post and my name is" + "#{newUser.username}"), content: random_words.shuffle.join(" "))
-User.each.posts.create!(title: ("Fourth post and my name is" + "#{newUser.username}"), content: random_words.shuffle.join(" "))
+User.all.each.posts.create!(title: ("Second post and my name is" + "#{newUser.username}"), content: random_words.shuffle.join(" "))
+User.all.each.posts.create!(title: ("Third post and my name is" + "#{newUser.username}"), content: random_words.shuffle.join(" "))
+User.all.each.posts.create!(title: ("Fourth post and my name is" + "#{newUser.username}"), content: random_words.shuffle.join(" "))

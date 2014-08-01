@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   
   
   has_many(
-    :posts,
+    :posts, dependent: :destroy,
     class_name: "Post",
     foreign_key: :owner_id,
     primary_key: :id
