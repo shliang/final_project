@@ -1,16 +1,16 @@
-<h2> <%= user.escape("username") %> </h2>
+<h1> <span class="label label-primary"><%= user.escape("username") %> </span> </h1>
 
+<br>
 
-
-
+<% var colors = ["panel-success", "panel-info", "panel-warning", "panel-danger"]%>
 
 	<% user.posts().each(function(post) { %>
-	<div class="panel panel-default">
+	<div class="panel <%= colors[Math.floor(Math.random() * colors.length)] %>">
+		<div class="panel-heading">
+			  <a href="#/posts/<%= post.id %>" ><h3> <%= post.escape("title") %> </h3></a>
+		</div>
 	  <div class="panel-body">
-			<h3>
-			  <a href="#/posts/<%= post.id %>" > <%= post.escape("title") %> </a>
-			</h3>
-			
+		
 			<p>
 			  <%= post.escape("content") %>
 			</p>

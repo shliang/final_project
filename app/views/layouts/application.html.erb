@@ -9,40 +9,39 @@
 </head>
 <body>
 	
-  <nav class="navbar navbar-default">
-    <div class="navbar-header">
-      <ul class="nav navbar-nav nav-pills nav-links">
-				<a class="navbar-brand" href="#"> <img src="/assets/logo_zenpost.jpg" width="160"
-					height="60"> </a>
+	  <nav class="navbar navbar-default">	
+			<div class='container-fluid'>
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#"> 
+							<img class='navbar-logo' src="/assets/logo_zenpost.jpg"> 
+						</a>
+					</div>
+			
+					<ul class="nav navbar-nav already-sign-in-buttons">
+			      <% if current_user %>
+				      <li class="between-links" > <a href="#"> <%= current_user.username %> </a> </li>
+			        <li class="between-links"> <a href="#/users"> Users </a> </li>
+			        <li class="between-links"> <a href="#/users/<%= current_user.id %>"> Your Posts </a> </li>
+						<% end %>
+					</ul>
 					
-	      <% if current_user %>
-	      <li class='dropdown'>
-	        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.username %>
-						<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-	          <li><a href="#/users"> Users </a> </li>
-	          <li class='divider'></li>
-	          <li><a href="#/users/<%= current_user.id %>"> Your Posts </a> </li>
-	        </ul>
-         </li>
-				 <% end %>
-			 </ul>
-		 </div>
-		 
-      <% if current_user %>
-      <div class='pull-right buttons-for-padding'>
-				<%= button_to "Sign Out", session_url, :method => :delete, 
-					class:'btn btn-danger' %>
-      </div>
-        
-      <% else %>
-      <div class="pull-right buttons-for-padding">
-				<%= render "users/sign_up_form" %>
-        <%= render "sessions/sign_in_form" %>
-      </div>
-      <% end %>
-    </div>
-</nav>
+					<ul class="nav navbar-nav nav-right">
+			      <% if current_user %>
+					    <li class="sign-out-button">
+									<%= button_to "Sign Out", session_url, :method => :delete, 
+										class:'btn btn-sm btn-danger navbar-btn' %>
+				      </li>
+						<% end %>
+					</ul>
+					
+					<ul class="nav navbar-nav not-sign-in-buttons">		
+			      <% unless current_user %>
+						<li class="between-not-sign-in-buttons"> <%= render "users/sign_up_form" %> </li>
+				    <li class="between-not-sign-in-buttons"> <%= render "sessions/sign_in_form" %> </li> 
+			      <% end %>
+					</ul>
+			</div>
+		</nav>
 
 
   <div class='container'>    
