@@ -30,13 +30,13 @@
 		 </div>
 		 
       <% if current_user %>
-      <div class='pull-right'>
+      <div class='pull-right buttons-for-padding'>
 				<%= button_to "Sign Out", session_url, :method => :delete, 
 					class:'btn btn-danger' %>
       </div>
         
       <% else %>
-      <div class="pull-right">
+      <div class="pull-right buttons-for-padding">
 				<%= render "users/sign_up_form" %>
         <%= render "sessions/sign_in_form" %>
       </div>
@@ -49,14 +49,24 @@
 		<%= yield %> 
 	</div>
 	
-  <% if flash[:errors] %>
-  <h3>Please fix the following errors:</h3>
-  <ul>
-    <% flash[:errors].each do |error| %>
-    <li><%= error %></li>
-    <% end %>
-  </ul>
-  <% end %>
+	<br>
+	
+	<% if flash[:errors] %>
+	<div class="container">
+		<div class='row text-center'>
+			<div class='col-xs-4 col-xs-offset-4'>
+				<div class="jumbotron">
+				  <h3>User Not found:</h3>
+				    <ul>
+					    <% flash[:errors].each do |error| %>
+						    <li><%= error %></li>
+					    <% end %>
+				  </ul>
+				</div>
+			</div>
+		</div>
+  </div>
+	<% end %>
 	
 
 </body>

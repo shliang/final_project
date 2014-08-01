@@ -51,15 +51,21 @@ body {
 
 .navbar-default {
 	height: 62px;
-	background-image: url("navbar_background.png");
+	background-image: url("background_5.jpg");
 };
 
 //"http://www.bobbuskirk.com/images/twitterbg1.jpg"
 
 .navbar-brand {
 	padding-top: 0;
+	padding-left:105px;
 };
 
 .user_all {
 	padding-left: 0;
+};
+
+.buttons-for-padding {
+	padding-top:15px;
+	padding-right: 105px;
 };

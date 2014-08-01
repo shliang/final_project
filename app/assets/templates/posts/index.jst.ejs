@@ -11,6 +11,23 @@
 <div class='row'>
 
 	<div class="col-xs-10">
+		
+		
+		<% if (posts.length === 0) { %>
+		<div class="jumbotron">
+		  <h4> You currently do not have any Posts Yet.</h4>
+			<br>
+			
+			<h4> To Create a new post, click new post button Above! </h4>
+			
+			<br>
+			
+			<h4> Or you can follow users in the panel on the left and see their posts!</h4>
+			
+			<br>
+			<h4> To see individual user's posts before following, please go to <a href="#/users"> users page</a>
+		</div>
+		<% } %>
 
 
 		<% posts.each(function (post) { %>
