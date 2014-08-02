@@ -19,18 +19,18 @@ Blogger.Views.UsersIndex = Backbone.CompositeView.extend({
 	},
 	
 	list_user: function(event) {
-		console.log(event.target.id)
-		if (event.target.id !== "button_text" || event.target.id !== "") {
-			// debugger
-			// var mousedUser = Blogger.Collections.users.findWhere({id: Number(event.target.id)})
-			var mousedUser = new Blogger.Models.User({id: Number(event.target.id)})
+				// debugger
+		var mousedUser = Blogger.Collections.users.findWhere({id: Number(event.target.id)})
+		// var mousedUser = new Blogger.Models.User({id: Number(event.target.id)})
+	
+		if (mousedUser.posts().length === 0) {
 			mousedUser.fetch()
-			this.$("div.current_moused_user").empty()
-			var currentUserView = new Blogger.Views.ShowUser({
-				model: mousedUser
-			});
-			this.addSubview("div.current_moused_user", currentUserView)	
 		}
+		this.$("div.current_moused_user").empty()
+		var currentUserView = new Blogger.Views.ShowUser({
+			model: mousedUser
+		});
+		this.addSubview("div.current_moused_user", currentUserView)	
 	},
 	
 	
