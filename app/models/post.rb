@@ -7,5 +7,12 @@ class Post < ActiveRecord::Base
     foreign_key: :owner_id,
     primary_key: :id
   )
+  
+  has_many(
+    :comments, dependent: :destroy,
+    class_name: "Comment",
+    foreign_key: :post_id,  
+    primary_key: :id
+  )
 
 end

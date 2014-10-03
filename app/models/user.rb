@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   attr_reader :password
   
-  before_validation :ensure_session_token 
+  before_validation :ensure_session_token
+  before_validation :ensure_image_url
   
   validates :username, :digested_password, :session_token, presence: true
   validates :password, length: { minimum: 6, allow_nil: true } 
@@ -28,6 +29,13 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
   
+  has_many(
+    :comments, dependent: :destroy,
+    class_name: "Comment",
+    foreign_key: :author_id,
+    primary_key: :id
+  )
+  
   def is_already_following?(followee) #followee is an object
     user.followees.include?(followee)
   end
@@ -50,6 +58,10 @@ class User < ActiveRecord::Base
     
   def ensure_session_token
     self.session_token ||= SecureRandom::urlsafe_base64(16)
+  end
+  
+  def ensure_image_url
+    self.image_url ||= "https://en.opensuse.org/images/0/0b/Icon-user.png"
   end
   
   def reset_session_token!
