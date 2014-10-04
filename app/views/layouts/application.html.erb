@@ -5,6 +5,10 @@
   <title>Blog</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	<script src="http://api.filepicker.io/v1/filepicker.js"></script>
+	<script>
+	  filepicker.setKey(<%= ENV["file_picker_api_key"] %>);
+	</script>
   <%= csrf_meta_tags %>
 </head>
 <body>

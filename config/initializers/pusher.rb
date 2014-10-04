@@ -1,0 +1,1 @@
+Pusher.file_picker_api_key = ENV["pusher_file_picker_api_key"]
