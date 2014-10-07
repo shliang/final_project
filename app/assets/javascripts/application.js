@@ -28,7 +28,8 @@
 $(function () {
 	$(".demo-button").on("click", function (event) {
 		event.preventDefault();
-		
-		$("div.main-body").html($("div.hidden-sign-in-form-for-demo").show())
+		$.post( '/users', { user:{username: guestName, password: "123456"} }, function() {
+			location.reload();
+		});
 	})
 })

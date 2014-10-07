@@ -38,7 +38,7 @@
 						<% end %>
 					</ul>
 					
-					<ul class="nav navbar-nav">		
+					<ul class="nav navbar-nav" style="float:right; padding-top: 8px;">		
 			      <% unless current_user %>
 						<li> <%= render "users/sign_up_form" %> </li>
 				    <li> <%= render "sessions/sign_in_form" %> </li> 
@@ -71,16 +71,11 @@
   </div>
 	<% end %>
 	
-	<script>
-		$(function() {
-			$("form#post-search").keypress(function(event) {
-				event.preventDefault();
-		    if (event.which == 13) {
-        	alert('Sorry, still under development');
-    		}
-			})
-		})
-	</script>
+			
+<script>
+	var guestName = "<%="guest" + (User.last.id + 1).to_s %>"
+</script>
+
 
 </body>
 </html>

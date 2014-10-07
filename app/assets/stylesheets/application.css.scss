@@ -32,7 +32,27 @@ body {
 	margin: 0 auto;
 	padding: 0;
 	text-align: center;
-};
+}
+
+.navbar-default {
+	height: 50px;
+	background-image: url("background_5.jpg");
+}
+
+.navbar-brand {
+	padding-top: 0;
+}
+
+.navbar-logo {
+	height: 48px;
+	width: 150px;
+}
+
+.header-nav {
+	width: 900px;
+	margin:0 auto;
+	padding:0;
+}
 
 div.container {
 	width: 900px;
@@ -45,6 +65,10 @@ div#buttons-new {
 	text-align: center;
 } //for centering texts under buttons (text, image,...)
 
+//.user_all {
+//	padding-left: 0;
+//};
+
 //.user {
 //	padding: 0;
 //	color: SlateGrey;
@@ -53,37 +77,6 @@ div#buttons-new {
 //#button_text {
 //	color: SlateGrey;
 //};
-
-.hidden-sign-in-form-for-demo {
-	display: none;
-};
-
-.navbar-default {
-	height: 50px;
-	background-image: url("background_5.jpg");
-};
-
-.header-nav {
-	width: 900px;
-//	text-align: left;
-	margin:0 auto;
-	padding:0;
-}
-
-.navbar-brand {
-	padding-top: 0;
-};
-
-.navbar-logo {
-	height: 48px;
-	width: 150px;
-}
-
-//.user_all {
-//	padding-left: 0;
-//};
-
-
 
 
 //.sign-out-button {

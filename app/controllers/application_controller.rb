@@ -22,6 +22,10 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_url unless current_user
   end
   
+  def already_signed_in
+    redirect_to root_url if current_user
+  end
+  
   helper_method :current_user
 
 end

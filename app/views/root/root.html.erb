@@ -6,4 +6,16 @@
 	current_user_id = <%= current_user.id.to_json.html_safe %>;
 	current_user_imgURL = <%= current_user.image_url.to_json.html_safe %>;
 </script>
+
+<script>
+	$(function() {
+		$("form#post-search").keypress(function(event) {
+			event.preventDefault();
+	    if (event.which == 13) {
+	    	alert('Sorry, still under development');
+			}
+		})
+	});
+</script>
+
 <script>$(Blogger.initialize);</script>

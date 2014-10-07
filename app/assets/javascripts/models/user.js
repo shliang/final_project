@@ -1,4 +1,5 @@
 Blogger.Models.User = Backbone.Model.extend({
+	urlRoot: "api/users",
 	userFollows: function () {
 		return Blogger.Collections.userFollows
 	},
