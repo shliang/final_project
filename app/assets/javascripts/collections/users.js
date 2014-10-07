@@ -1,16 +1,4 @@
-// Write a RecommendedUsers collection
-// url: "/api/users/recommended"
-// model: User
-// when you fetch this collection you'll get users you don't follow.
-
-Blogger.Collections.RecommendedUsers = Backbone.Collection.extend({
-	url: "/api/users/userfollows",
-	model: Blogger.Models.User
-})
-
-
-Blogger.Collections.Users = Backbone.Collection.extend({
-	url: "/api/users",
+Backbone.UsersCollection = Backbone.Collection.extend({
 	model: Blogger.Models.User,
 	
 	getOrFetch: function (id) {
@@ -25,9 +13,22 @@ Blogger.Collections.Users = Backbone.Collection.extend({
 		} 
 		return user;
 	}
-	
 })
+
+Blogger.Collections.RecommendedUsers = Backbone.UsersCollection.extend({
+	url: "/api/users/userfollows"
+});
+
+Blogger.Collections.Users = Backbone.UsersCollection.extend({
+	url: "/api/users"
+});
+
+Blogger.Collections.Followees = Backbone.UsersCollection.extend({
+	url: "/api/users/followees"
+});
 
 Blogger.Collections.users = new Blogger.Collections.Users();
 
-Blogger.Collections.recommendedUsers = new Blogger.Collections.RecommendedUsers()
+Blogger.Collections.recommendedUsers = new Blogger.Collections.RecommendedUsers();
+
+Blogger.Collections.followees = new Blogger.Collections.Followees();

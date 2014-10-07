@@ -1,44 +1,37 @@
-<div class='row'>
-  <div class="col-xs-12">
-	 	<div class="new-post">
-	   	<button id="create-post" class="btn btn-primary btn-lg"> New Post </button>
-  	</div>
-	</div>
-</div>
-
-<br>
-
-<div class='row'>
-
-	<div class="col-xs-10">
-		
-		
-	
-
-
-		<% posts.each(function (post) { %>
-		<div class="panel panel-default">
-				<div class="panel-body">
-				  <h4> <%= post.get("user").username %> </h4>
-				  <h3> <a href="#/posts/<%= post.get('id')%>" > 
-				  <%= post.escape('title') %>
-					</a>
-					</h3>
-					<p> <%= post.escape('content') %> </p>
+<div class="col-xs-9">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-1" style="padding-left: 0; padding-right:0;">
+				<img src="<%= current_user_imgURL %>" 
+					class="img-rounded" height="100%" width="100%"
+				>
+			</div>
+			<div class="col-xs-11">
+				<div class="panel panel-default">
+					<div class="container-fluid">
+						<div class="panel-body" id="new-post"></div>
+					</div>
 				</div>
 			</div>
-		<% }) %>
-
+		</div>
 	</div>
 	
-	<div class="col-xs-2">
-		<div class="user-follows"> </div>
-	</div>
-
+	<br>
+	
+	<div id= "posts-show"></div>
 </div>
-
-<div class='row'>
-  <div class="col-xs-3">
-		<a href="#/users" > Users </a> 
+	
+<div class="col-xs-3 " style="padding-left: 0; padding-right:0;">
+	<h3 ><font color="white"> <%= current_username %> </font></h3>
+	<div class="list-group">
+	  <a href="#" class="list-group-item">Posts</a>
+	  <a href="#" class="list-group-item">Followers</a>
+	  <a href="#" class="list-group-item">Liked Posts</a>
+	  <a href="#" class="list-group-item">Customize</a>
+	</div>
+	<hr>
+	<div class="recommende-users">
+		<h3 ><font color="white">Recommended Users</font></h3>
+		<ul id="user-follows" class="list-group" ></ul>
 	</div>
 </div>

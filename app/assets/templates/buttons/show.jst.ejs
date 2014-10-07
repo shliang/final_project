@@ -1,8 +1,0 @@
-<li id="button_text"> 
-<a href="#/users/<%= user.id %>" id=<%= user.id %>> <%= user.escape("username")%> </a>
-<% if (follow === true) { %>
-<button class="unfollowing btn btn-warning" data-id="<%=user.id%>">Unfollow</button>
-<% } else { %>
-<button class="new-following btn btn-success" data-id="<%=user.id%>">Follow</button>
-<% } %>
-</li>

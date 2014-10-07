@@ -1,7 +1,9 @@
-<div class="root">
-	<div id="content">
-	</div>
+<div class="content">
 </div>
 
-<script> current_user = <%= current_user.to_json.html_safe %> </script>
+<script> 
+	current_username = <%= current_user.username.to_json.html_safe %>;
+	current_user_id = <%= current_user.id.to_json.html_safe %>;
+	current_user_imgURL = <%= current_user.image_url.to_json.html_safe %>;
+</script>
 <script>$(Blogger.initialize);</script>

@@ -29,23 +29,30 @@ body {
 	background-attachment: fixed;
 	font-family: serif;
 	font-size: large;
-//  background-image: url("http://www.freewebs.com/jessycoollayouts/retro_background_01[1].gif");
-};
-
-.friendship_buttons {
-	background-color: #006699;
-	border-radius: 10px;
-	box-shadow: 20px 20px 5px #000078;
-};
-
-.user {
+	margin: 0 auto;
 	padding: 0;
-	color: SlateGrey;
+	text-align: center;
 };
 
-#button_text {
-	color: SlateGrey;
-};
+div.container {
+	width: 900px;
+	text-align: left;
+	margin:0 auto;
+	padding:0;
+} // this is everything under nav bar
+
+div#buttons-new {
+	text-align: center;
+} //for centering texts under buttons (text, image,...)
+
+//.user {
+//	padding: 0;
+//	color: SlateGrey;
+//};
+//
+//#button_text {
+//	color: SlateGrey;
+//};
 
 .hidden-sign-in-form-for-demo {
 	display: none;
@@ -56,43 +63,47 @@ body {
 	background-image: url("background_5.jpg");
 };
 
-//"http://www.bobbuskirk.com/images/twitterbg1.jpg"
+.header-nav {
+	width: 900px;
+//	text-align: left;
+	margin:0 auto;
+	padding:0;
+}
 
 .navbar-brand {
 	padding-top: 0;
-	padding-left:100px;
 };
-
-.user_all {
-	padding-left: 0;
-};
-
-
 
 .navbar-logo {
 	height: 48px;
 	width: 150px;
 }
 
+//.user_all {
+//	padding-left: 0;
+//};
 
-.sign-out-button {
-	padding-left: 290px;
-};
 
-.already-sign-in-buttons {
-	padding-left: 100px;
-	font-size: 150%;
-};
 
-.not-sign-in-buttons {
-	padding-left:800px;
-	padding-top: 7px;
-}
 
-.between-not-sign-in-buttons {
-	padding-left: 10px;
-}
+//.sign-out-button {
+//	padding-left: 290px;
+//};
 
-.between-links {
-	padding-left: 30px;
-}
+//.already-sign-in-buttons {
+//	padding-left: 100px;
+//	font-size: 150%;
+//};
+
+//.not-sign-in-buttons {
+//	padding-left:800px;
+//	padding-top: 7px;
+//}
+
+//.between-not-sign-in-buttons {
+//	padding-left: 10px;
+//}
+
+//.between-links {
+//	padding-left: 30px;
+//}

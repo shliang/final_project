@@ -1,12 +1,8 @@
-
-<div class="friendship_buttons text-center">
-	<br>
-<h4> <span class="label label-success">Recommended Users!</span> </h4>
-
-<ul class="user">
-
-</ul>
-
-<br>
-</div>
-
+<% users.each(function(user) { %>
+	<li>
+		<a href="#">
+			<%= user.escape("username") %>
+		</a>
+		<span id="<%= user.id %>"=></span>
+	</li>
+<% }) %>

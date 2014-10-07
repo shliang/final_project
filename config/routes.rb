@@ -10,9 +10,11 @@ Blogger::Application.routes.draw do
     
     resources :users, only: [:index, :show] do
       get :userfollows, on: :collection
+      get :followees, on: :collection
+      resources :posts, only: [:index]
     end
     
-    resources :userfollows, only: [:create, :destroy, :index, :show]
+    resources :userfollows, only: [:create, :destroy]
     resources :comments, only: [:create, :update, :destroy]
   end
   

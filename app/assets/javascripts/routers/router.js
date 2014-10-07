@@ -1,37 +1,38 @@
 Blogger.Routers.Router = Backbone.Router.extend({
 	
 	routes: {
-		'': "postsIndex",
-		'posts/new' : "newPost",
-		'users/:id': 'userShow',
-		'posts/:id': 'showPost',
+		'': "dashboard",
+		'users/:id': 'usersShow',
+		'posts/:id': 'postsShow',
+		'posts': 'postsIndex',
 		"users" : "usersIndex"
-		// "recommendedusers" : "recommendedIndex"
 	},
 	
-	postsIndex: function () {
-		Blogger.Collections.posts.fetch()
+	dashboard: function () {
 		Blogger.Collections.recommendedUsers.fetch();
+		Blogger.Collections.followees.fetch({silent: true, parse: true});
+		Blogger.Collections.posts.reset([],{silent: true});
+		
 		var view = new Blogger.Views.PostsIndex({
+			followeesCollection: Blogger.Collections.followees,
 			collection: Blogger.Collections.posts
 		});
 		
 		this._swapView(view)
 	},
 	
-	newPost: function () {
-		var view = new Blogger.Views.NewPost()
-		this._swapView(view)
-	},
-	
-	showPost: function (id) {
+	postsShow: function (id) {
 		var post = Blogger.Collections.posts.getOrFetch(id)
 		
-    var view  = new Blogger.Views.ShowPost({
+    var view  = new Blogger.Views.PostsShow({
       model: post
     });
 		
 		this._swapView(view)
+	},
+	
+	postsIndex: function () {
+		
 	},
 	
 	usersIndex: function () {
@@ -45,7 +46,7 @@ Blogger.Routers.Router = Backbone.Router.extend({
 		this._swapView(view)
 	},
 	
-	userShow: function (id) {
+	usersShow: function (id) {
 		var user = new Blogger.Models.User({id: id})
 		user.fetch();
 
@@ -56,21 +57,10 @@ Blogger.Routers.Router = Backbone.Router.extend({
 		this._swapView(view)
 	},
 	
-	
-	recommendedIndex: function () {
-		Blogger.Collections.recommendedusers.fetch()
-		
-		var view = new Blogger.Views.RecommendedIndex({
-			collection: Blogger.Collections.recommendedusers
-		});
-		
-		this._swapView(view)
-	},
-	
 	_swapView: function (view) {
-		this.currentView && this.currentView.remove();
-		this.currentView = view;
-		$('#content').html(view.render().$el)
+		this._currentView && this._currentView.remove();
+		this._currentView = view;
+		$('.content').html(view.render().$el)
 	}
 	
 	

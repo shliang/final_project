@@ -1,4 +1,4 @@
-json.(user, :id, :username, :created_at, :updated_at)
+json.(user, :id, :username, :created_at, :updated_at, :image_url)
 
 posts ||= nil
 

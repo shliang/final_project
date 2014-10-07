@@ -18,7 +18,13 @@ module Api
       
       SQL
       
-      @users = @users.shuffle.take(10)
+      @users = @users.shuffle.take(5)
+      render "user/s_index"
+    end
+    
+    def followees
+      @users = current_user.followees + [current_user]    # also added self to followees
+                                                           # for adding user info to global followees in bb
       render "user/index"
     end
     
