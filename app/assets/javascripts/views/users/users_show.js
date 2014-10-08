@@ -1,13 +1,14 @@
-Blogger.Views.ShowUser = Backbone.CompositeView.extend({
+Blogger.Views.UsersShow = Backbone.CompositeView.extend({
 	template: JST["users/show"],
-	
+	className: "row",
 	initialize: function(options) {
-		this.listenTo(this.model, "sync", this.render);
+		this.listenTo(this.collection, "sync", this.render);
 	},
 	
 	render: function () {
 		var renderedContent = this.template({
-			user: this.model
+			user: this.model,
+			posts: this.collection
 		});
 		
 		this.$el.html(renderedContent);

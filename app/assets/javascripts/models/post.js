@@ -20,7 +20,9 @@ Blogger.Models.Post = Backbone.Model.extend({
 	parse: function (response) {
 		if (response.comments) {
 			this.comments().set(response.comments)
-		} else if (response.likes) {
+		} 
+		
+		if (response.likes) {
 			this.likes().set(response.likes)
 		}
 		

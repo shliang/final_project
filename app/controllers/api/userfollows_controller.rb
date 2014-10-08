@@ -3,7 +3,6 @@ module Api
     def index
       @user_follows = UserFollow.all
       render json: @user_follows
-      
     end
     
     def create
@@ -13,16 +12,6 @@ module Api
         render json: @user_follow
       else
         render json: @user_follow.errors.full_messages, status: :unprocessable_entity
-      end
-    end
-    
-    
-    def show
-      @user_follow = UserFollow.find(params[:id])
-      if @user_follow
-        render json: @user_follow
-      else
-        render json: ["Not found"], status: 403
       end
     end
     

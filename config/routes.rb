@@ -14,7 +14,7 @@ Blogger::Application.routes.draw do
       resources :posts, only: [:index]
     end
     
-    resources :userfollows, only: [:create, :destroy]
+    resources :userfollows, only: [:create, :destroy, :index]
     resources :comments, only: [:create, :update, :destroy]
   end
   

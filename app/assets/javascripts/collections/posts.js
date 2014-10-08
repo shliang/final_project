@@ -6,18 +6,17 @@ Blogger.Collections.Posts = Backbone.Collection.extend({
 		var post = this.get(id);
 		if (!post) {
 			post = new this.model({id: id});
-			post.fetch();
-				// {	
-				// success: function(){
-// 					this.add(post)
-// 				}.bind(this)
-			// }
-		} 
+			post.fetch({
+				success: function(){
+					this.add(post)
+				}.bind(this)
+			})
+		}
 		return post;
 	},
 	
 	comparator: function (post) {
-		var date = new Date(post.get("created_at"))
+		var date = new Date(post.get("updated_at"))
 		return date
 	}
 })
@@ -32,6 +31,7 @@ Blogger.Collections.UserPosts = Backbone.Collection.extend({
 	},
 	
 	url: function () {
-		return "api/users/" + this.user.id + "/posts"
+		var userID = this.user.id || this.user;
+		return "api/users/" + userID + "/posts"
 	}
 })

@@ -1,0 +1,12 @@
+
+<button> List Display </button>
+<p></p>
+<% users.each(function (user) { %>
+	<div class="col-xs-3">
+		<a href="#/users/<%= user.id %>">
+			<img src="<%= user.escape("image_url") %>" height="100%" width="100%"></img>
+		</a>
+		<span id="user-index-<%= user.id %>"></span>
+	</div>	
+<% }) %>
+

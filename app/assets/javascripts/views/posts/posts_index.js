@@ -94,13 +94,13 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 	renderRecUsers: function () {
 		var view = this;
 		Blogger.Collections.recommendedUsers.each( function (user) {
-			var following = 
-				Blogger.Collections.userFollows.track(user);
+			// var following =
+// 				Blogger.Collections.userFollows.track(user);
 			
 			var followsShowView = new Blogger.Views.FollowsShow({
 				model: user,
-				follow: !!following,
-				following: following
+				follow: false,
+				following: ""
 			})
 			
 			view.addSubview('ul#user-follows', followsShowView);

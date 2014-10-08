@@ -3,7 +3,7 @@ module Api
     
     def index
       @users = User.all
-      render "user/index"
+      render "user/s_index"
     end
     
     def userfollows

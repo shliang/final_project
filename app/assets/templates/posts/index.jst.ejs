@@ -24,8 +24,12 @@
 <div class="col-xs-3 " style="padding-left: 0; padding-right:0;">
 	<h3 ><font color="white"> <%= current_username %> </font></h3>
 	<div class="list-group">
-	  <a href="#" class="list-group-item">Posts</a>
-	  <a href="#" class="list-group-item">Followers</a>
+	  <a href="#/users/<%= current_user_id %>" class="list-group-item">
+			Posts
+		</a>
+	  <a href="#" class="list-group-item">
+			Followers
+		</a>
 	  <a href="#" class="list-group-item">Liked Posts</a>
 	  <a href="#" class="list-group-item">Customize</a>
 	</div>

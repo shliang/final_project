@@ -21,9 +21,9 @@
 			
 					<ul class="nav navbar-nav" style="float:right;">
 			      <% if current_user %>
-				      <li> <a href="#"> <%= current_user.username %> </a> </li>
+				      <li> <a href="#/users/<%= current_user.id %>"> <%= current_user.username %> </a> </li>
 			        <li> <a href="#/users"> Users </a> </li>
-			        <li> <a href="#/users/<%= current_user.id %>"> Your Posts </a> </li>
+			        <li> <a href="#/users/<%= current_user.id %>"> Setting </a> </li>
 					    <li>
 									<%= button_to "Sign Out", session_url, :method => :delete, 
 										class:'btn btn-sm btn-danger navbar-btn sign-out-button' %>
@@ -55,19 +55,12 @@
 	<br>
 	
 	<% if flash[:errors] %>
-	<div class="container">
-		<div class='row text-center'>
-			<div class='col-xs-4 col-xs-offset-4'>
-				<div class="jumbotron">
-				  <h3>User Not found:</h3>
-				    <ul>
-					    <% flash[:errors].each do |error| %>
-						    <li><%= error %></li>
-					    <% end %>
-				  </ul>
-				</div>
-			</div>
-		</div>
+	<div class="alert alert-danger" role="alert">
+    <ul>
+	    <% flash[:errors].each do |error| %>
+		    <li><%= error %></li>
+	    <% end %>
+  	</ul>
   </div>
 	<% end %>
 	

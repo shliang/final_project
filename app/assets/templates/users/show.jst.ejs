@@ -1,22 +1,13 @@
-<h1> <span class="label label-primary"><%= user.escape("username") %> </span> </h1>
+<div class="header">
+	<a href="#/users/<%= user.id %>">
+		<img src="<%= user.escape("image_url") %> " class="img-rounded" height="130px" width="130px">
+	</a>
+	<h2><%= user.escape("username") %></h2>
+</div>
 
-<br>
 
-<% var colors = ["panel-success", "panel-info", "panel-warning", "panel-danger"]%>
-
-	<% user.posts().each(function(post) { %>
-	<div class="panel <%= colors[Math.floor(Math.random() * colors.length)] %>">
-		<div class="panel-heading">
-			  <a href="#/posts/<%= post.id %>" ><h3> <%= post.escape("title") %> </h3></a>
-		</div>
-	  <div class="panel-body">
-		
-			<p>
-			  <%= post.escape("content") %>
-			</p>
-	  </div>
-	</div>
-<% }) %>
+<div class="col-xs-3" id="post-time" style="padding-left: 0; padding-right:0;"></div>
+<div class="col-xs-9" id="post-content"></div>
 
 
 <a href="#/users">Back to Users </a>
