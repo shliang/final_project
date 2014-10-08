@@ -30,9 +30,20 @@ Blogger.Models.User = Backbone.Model.extend({
 	
 	parse: function(payload) {
 		if (payload.posts) {
-			this.posts().set(payload.posts, {remove: false});
+			this.posts().set(payload.posts, {remove: false, silent: true});
 			delete payload.posts;
 		} 
+		
+		if (payload.recom_users) {
+			Blogger.Collections.recommendedUsers.set(payload.recom_users, {silent: true});
+			delete payload.recom_users;
+		}
+		
+		if (payload.followers) {
+			Blogger.Collections.followers.set(payload.followers);
+			delete payload.followers;
+		}
+		
 		if (payload.user_follows) {  // take a look at this later
 			this.userFollows().set(payload.user_follows);
 			delete payload.user_follows;

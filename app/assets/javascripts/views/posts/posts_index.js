@@ -34,18 +34,6 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 			"remove",
 			this.removePost
 		);
-
-		this.listenTo(
-			Blogger.Collections.recommendedUsers,
-			"sync",
-			this.renderRecUsers
-		);
-
-		// this.listenTo(
-		// 	Blogger.Collections.recommendedUsers,
-		// 	"remove",
-		// 	this.test1
-		// );
 	},
 	
 	addPost: function (post) {
@@ -74,12 +62,10 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 	
 	addFollowees: function (model) {
 		var view = this,
-		   posts = new Blogger.Collections.UserPosts(
-				 [], { user: model }
-			 );
-		posts.fetch({
+		   new_followee = new Blogger.Models.User({ id: model.id });
+		new_followee.fetch({
 			success: function() {
-				view.collection.add(posts.models);
+				view.collection.add(new_followee.userPosts().models);
 			}
 		})
 	},
@@ -94,8 +80,6 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 	renderRecUsers: function () {
 		var view = this;
 		Blogger.Collections.recommendedUsers.each( function (user) {
-			// var following =
-// 				Blogger.Collections.userFollows.track(user);
 			
 			var followsShowView = new Blogger.Views.FollowsShow({
 				model: user,

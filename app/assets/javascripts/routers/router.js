@@ -9,9 +9,7 @@ Blogger.Routers.Router = Backbone.Router.extend({
 	},
 	
 	dashboard: function () {
-		// Blogger.Collections.recommendedUsers.fetch();
 		Blogger.Collections.followees.fetch({silent: true, parse: true});
-		// Blogger.Collections.posts.reset([],{silent: true}); //can remove this line if
 		
 		var view = new Blogger.Views.PostsIndex({
 			followeesCollection: Blogger.Collections.followees,

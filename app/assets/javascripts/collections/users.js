@@ -15,10 +15,6 @@ Backbone.UsersCollection = Backbone.Collection.extend({
 	}
 })
 
-Blogger.Collections.RecommendedUsers = Backbone.UsersCollection.extend({
-	url: "/api/users/userfollows"
-});
-
 Blogger.Collections.Users = Backbone.UsersCollection.extend({
 	url: "/api/users"
 });
@@ -29,6 +25,8 @@ Blogger.Collections.Followees = Backbone.UsersCollection.extend({
 
 Blogger.Collections.users = new Blogger.Collections.Users();
 
-Blogger.Collections.recommendedUsers = new Blogger.Collections.RecommendedUsers();
+Blogger.Collections.recommendedUsers = new Blogger.Collections.Users();
+
+Blogger.Collections.followers = new Blogger.Collections.Users();
 
 Blogger.Collections.followees = new Blogger.Collections.Followees();

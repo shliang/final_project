@@ -30,6 +30,19 @@ class User < ActiveRecord::Base
   )
   
   has_many(
+    :user_follows_reverse,
+    class_name: "UserFollow",
+    foreign_key: :followee_id,
+    primary_key: :id
+  )
+  
+  has_many(
+    :followers,
+    through: :user_follows_reverse,
+    source: :follower
+  )
+  
+  has_many(
     :comments, dependent: :destroy,
     class_name: "Comment",
     foreign_key: :author_id,
@@ -68,6 +81,22 @@ class User < ActiveRecord::Base
     self.session_token = SecureRandom::urlsafe_base64(16)
     self.save!
     return self.session_token
+  end
+  
+  def recom_users
+    users = User.find_by_sql([<<-SQL, self.id, self.id])
+    SELECT users.*
+    FROM users
+    LEFT OUTER JOIN (
+      SELECT user_follows.*
+      FROM user_follows
+      WHERE user_follows.follower_id = ?
+    ) AS user_follows ON users.id = user_follows.followee_id
+    WHERE user_follows.id IS NULL AND users.id != ?
+    
+    SQL
+    
+    return users.shuffle.take(5)
   end
   
 end
