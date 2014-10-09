@@ -11,7 +11,6 @@ Blogger.Views.PostsNew = Backbone.View.extend({
 	events: {
 		"click #create-post" : "showForm",
 		"click a" : "hideForm",
-		"keydown textarea" : "createOnEnter",
 		"click #submit" : "submit"
 	},
 	
@@ -33,11 +32,11 @@ Blogger.Views.PostsNew = Backbone.View.extend({
 		// this.render();
 	},
 	
-	createOnEnter : function (event) {
-    if(event.keyCode == 13) {
-      this.submit(event);
-    }
-	},
+	// createOnEnter : function (event) {
+	//     if(event.keyCode == 13) {
+	//       this.submit(event);
+	//     }
+	// },
 	
 	submit: function (event) {
 		event.preventDefault();

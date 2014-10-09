@@ -68,12 +68,23 @@ div#buttons-new {
 	text-align: center;
 } //for centering texts under buttons (text, image,...)
 
-div.image-option {
+div.div-inline-block {
 	display: inline-block;
 }
 
 div.header {
 	text-align: center;
+}
+
+div.padding-top-off {
+	padding-top: 0;
+}
+
+form.submitting {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 a {

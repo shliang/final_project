@@ -1,23 +1,23 @@
-Blogger.Views.PostsShow = Backbone.View.extend({
-	className: "container-fluid",
+Blogger.Views.PostsShow = Backbone.CompositeView.extend({
+	className: "panel post-box",
 	template: function () {
 		if (this._edit) {
 			return JST["posts/edit"]
 		} else {
-			return JST["posts/show"]
+			return JST["posts/show_post"]
 		}
 	},
 	
 	events: {
 		"click button.destroy": "destroyPost",
 		"click a.edit" : "editPost",
-		"click button.submit" : "submitUpdate",
+		"click button.save" : "submitUpdate",
 		"click button.cancel" : "cancelEdit"
 	},
 
 	initialize: function (options) {
 		this._edit = false;
-		this.followeesCollection = options.users
+		this.user = options.user;
 	},
 	
 	editPost: function (event) {
@@ -54,14 +54,14 @@ Blogger.Views.PostsShow = Backbone.View.extend({
 		
 	},
 	
+	renderLikeButton: function () {
+		
+	},
+	
 	render: function () {
-		var user = 
-			this.followeesCollection.findWhere({id: this.model.get("owner_id")}) ||
-			new Blogger.Models.User();
-			
 		var renderedContent = this.template()({
 			post: this.model,
-			user: user
+			user: this.user
 		})
 		
 		this.$el.html(renderedContent);
@@ -69,12 +69,4 @@ Blogger.Views.PostsShow = Backbone.View.extend({
 		
 		return this
 	}
-	
-	// editPost: function () {
-// 		var editView = new Blogger.Views.EditPost({
-// 			model: this.model
-// 		})
-// 		this.$(".post-show-place").html(editView.render().$el)
-// 	}
-	
 })

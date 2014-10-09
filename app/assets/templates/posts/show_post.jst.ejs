@@ -1,0 +1,32 @@
+<div class="panel-body padding-top-off">
+  <span><%= user.escape("username") %></span>
+	<h4><%= post.escape('title') %></h4>
+	<p> <%= post.escape('content') %></p>
+	
+	<% if (user.id === current_user_id) { %>
+		<div class="edit div-inline-block">
+			<a href="#" class="edit">
+				<img src="http://www.houseonthehill.com/images/newicon/settings.png"
+					heigth="24px"
+					width="24px">
+			</a>
+		</div>
+	<% } %>
+
+	<% if (user.id != current_user_id) { %>
+		<div class="comments  div-inline-block">
+			<a href="#/posts/<%= post.id %>">
+				<img src="http://www.clker.com/cliparts/0/5/d/0/1194994515522118165comment.svg.med.png"
+					heigth="24px"
+					width="24px">
+			</a>
+		</div>
+	<% } %>			
+
+	<div class="like div-inline-block">
+		<img src="http://www.clker.com/cliparts/6/X/w/g/G/R/salmon-heart-md.png"
+			heigth="24px"
+			width="24px">
+	</div>
+	
+</div>

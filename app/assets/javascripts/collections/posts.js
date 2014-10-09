@@ -22,16 +22,3 @@ Blogger.Collections.Posts = Backbone.Collection.extend({
 })
 
 Blogger.Collections.posts = new Blogger.Collections.Posts();
-
-Blogger.Collections.UserPosts = Backbone.Collection.extend({
-	model: Blogger.Models.Post,
-	
-	initialize: function (models, options) {
-		this.user = options.user;
-	},
-	
-	url: function () {
-		var userID = this.user.id || this.user;
-		return "api/users/" + userID + "/posts"
-	}
-})

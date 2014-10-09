@@ -21,9 +21,9 @@ Blogger.Routers.Router = Backbone.Router.extend({
 	},
 	
 	postsShow: function (id) {
-		var post = new Blogger.Collections.UserPosts()
+		var post = Blogger.Collections.posts.getOrFetch(id);
 		
-    var view  = new Blogger.Views.PostsShow({
+    var view  = new Blogger.Views.PostsShowInfo({
       model: post
     });
 		

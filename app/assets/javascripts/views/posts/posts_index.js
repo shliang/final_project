@@ -37,9 +37,13 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 	},
 	
 	addPost: function (post) {
-		var postShowView = new Blogger.Views.PostsShow ({
+		var user = 
+			this.followeesCollection.findWhere({id: post.get("owner_id")}) ||
+			new Blogger.Models.User();
+			
+		var postShowView = new Blogger.Views.ImagePostShow ({
 			model: post,
-			users: this.followeesCollection
+			author: user
 		});
 		
 		this.addSubview("div#posts-show", postShowView);
@@ -47,7 +51,7 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 	
 	removePost: function (post) {
 		var id = "#post-" + post.id;
-		$(id).remove();
+		$(id).parent().remove();
 	},
 	
 	renderPosts: function () {
