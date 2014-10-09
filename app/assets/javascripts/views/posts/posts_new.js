@@ -17,12 +17,20 @@ Blogger.Views.PostsNew = Backbone.View.extend({
 	
 	showForm : function () {
 		this._showForm = true;
-		this.render();
+		this.$("div.new-collection-buttons").animate({
+			opacity: 0.25,
+			height: [ "toggle", "swing" ]
+		}, 200, "linear", this.render.bind(this));
+		// this.render();
 	},
 	
 	hideForm: function () {
 		this._showForm = false;
-		this.render();
+		this.$("form").animate({
+			opacity: 0.25,
+			height: [ "toggle", "swing" ]
+		}, 100, "linear", this.render.bind(this));
+		// this.render();
 	},
 	
 	createOnEnter : function (event) {

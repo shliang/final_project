@@ -1,17 +1,41 @@
-<% var panelColors = ["panel-primary", "panel-success", "panel-info", "panel-warning"] %>
-<% var color = panelColors[Math.floor(Math.random()*panelColors.length)] %>
 <div class="row" id="post-<%= post.id %>">
 	<div class="col-xs-1" style="padding-left: 0; padding-right:0;">
-		<img src="<%= image_url %>" class="img-rounded" height="100%" width="100%">
+		<img src="<%= user.escape("image_url") %>" class="img-rounded" height="100%" width="100%">
 	</div>
 
 	<div class="col-xs-11">
-		<div class="panel panel-default <%= color %>">
-			 <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px;">
-				 <h4><%= post.escape('title') %></h4>
-			 </div>
+		<div class="panel panel-default post-box" style="padding-top:0">
 			<div class="panel-body">
+			  <span><%= user.escape("username") %></span>
+				<h4><%= post.escape('title') %></h4>
 				<p> <%= post.escape('content') %></p>
+				
+				<% if (user.id === current_user_id) { %>
+					<div class="edit image-option">
+						<a href="#" class="edit">
+							<img src="http://www.houseonthehill.com/images/newicon/settings.png"
+								heigth="24px"
+								width="24px">
+						</a>
+					</div>
+				<% } %>
+		
+				<% if (user.id != current_user_id) { %>
+					<div class="comments  image-option">
+						<a href="#/posts/<%= post.id %>">
+							<img src="http://www.clker.com/cliparts/0/5/d/0/1194994515522118165comment.svg.med.png"
+								heigth="24px"
+								width="24px">
+						</a>
+					</div>
+				<% } %>			
+
+				<div class="like image-option">
+					<img src="http://www.clker.com/cliparts/6/X/w/g/G/R/salmon-heart-md.png"
+						heigth="24px"
+						width="24px">
+				</div>
+				
 			</div>
 		</div>
 	</div>

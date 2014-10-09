@@ -2,12 +2,15 @@
   <label> Post Title </label>
 	<input type="text" name="post[title]" id="post_title", value="<%= post.escape("title") %>" class='form-control'>
 	
-	<br>
+	<p></p>
+	
 	<label> Post Body </label>
 	<textarea rows="4" cols="100" name="post[content]" id="post_content" class='form-control'> <%= post.escape("content") %> </textarea>
 	
-	<br>
+	<p></p>
 	
-  <button class="btn btn-info"> Save </button>
+  <button class="btn btn-info save"> Save </button>
+	<button class="btn btn-warning cancel"> Cancel </button>
+	<button class="btn btn-danger destroy" > Destroy </button>
 
 </form>

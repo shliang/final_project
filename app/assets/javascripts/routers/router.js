@@ -1,14 +1,15 @@
 Blogger.Routers.Router = Backbone.Router.extend({
 	
 	routes: {
-		'': "dashboard",
-		'posts' : 'postsIndex', // that hover over effect page
+		'' : 'postsIndex', 
 		'posts/:id': 'postsShow', // shows a single post, this allows for commenting
-		"users" : "usersIndex", // shows pictures of all users, when clicked, takes to posts/user/:id
-		'users/:id': 'usersShow' // shows posts that belongs to user with :id
+		"users" : "usersIndex", // shows pictures of all users, when clicked, takes to posts/user/:id, also has
+														// hover effect
+		'users/:id': 'usersShow', // shows posts that belongs to user with :id
+		'setting' : 'settingShow'
 	},
 	
-	dashboard: function () {
+	postsIndex: function () {
 		Blogger.Collections.followees.fetch({silent: true, parse: true});
 		
 		var view = new Blogger.Views.PostsIndex({
@@ -29,35 +30,37 @@ Blogger.Routers.Router = Backbone.Router.extend({
 		this._swapView(view)
 	},
 	
+	usersIndex: function () {
+		Blogger.Collections.users.fetch();
+		
+		var view = new Blogger.Views.UsersIndex({
+			collection: Blogger.Collections.users,
+			userFollows: Blogger.Collections.userFollows
+		});
+		this._swapView(view)
+	},
+
 	usersShow: function (id) {
-		var posts, user;
+		var user;
 		if (user = Blogger.Collections.followees.get(id)) {
-			posts = Blogger.Collections.posts.where({owner_id: id});
-			posts = new Blogger.Collections.UserPosts(posts, {user: id})
+			user.userPosts().set(
+				Blogger.Collections.posts.where({owner_id: id})
+			);
 		} else {
-			posts = new Blogger.Collections.UserPosts([], {user: id});
 			user = new Blogger.Models.User({id: id});
 		}
-		user.fetchPost(posts);
+		user.fetch();
 		
 		var userShowView = new Blogger.Views.UsersShow({
-			collection: posts,
+			collection: user.userPosts(),
 			model: user
 		});
 		
 		this._swapView(userShowView)
 	},
 	
-	usersIndex: function () {
-		Blogger.Collections.users.fetch();
-		Blogger.Collections.userFollows.fetch();
+	settingShow: function () {
 		
-		var view = new Blogger.Views.UsersIndex({
-			collection: Blogger.Collections.users,
-			userFollows: Blogger.Collections.userFollows
-		});
-		
-		this._swapView(view)
 	},
 	
 	_swapView: function (view) {

@@ -17,15 +17,6 @@ Blogger.Models.User = Backbone.Model.extend({
 	},
 	
 	// posts that belongs to a specific user
-	
-	fetchPost: function (userPosts) {
-		this.fetch({
-			silent: true,
-			success: function () {
-				userPosts.fetch({silent: true});
-			}
-		})
-	},
 
 	
 	parse: function(payload) {
@@ -45,7 +36,7 @@ Blogger.Models.User = Backbone.Model.extend({
 		}
 		
 		if (payload.user_follows) {  // take a look at this later
-			this.userFollows().set(payload.user_follows);
+			this.userFollows().set(payload.user_follows, {silent: true});
 			delete payload.user_follows;
 		}
 		

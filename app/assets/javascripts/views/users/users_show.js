@@ -1,8 +1,8 @@
 Blogger.Views.UsersShow = Backbone.CompositeView.extend({
 	template: JST["users/show"],
-	className: "row",
+	className: "user-content",
 	initialize: function(options) {
-		this.listenTo(this.collection, "sync", this.render);
+		this.listenTo(this.model, "sync", this.render);
 	},
 	
 	render: function () {

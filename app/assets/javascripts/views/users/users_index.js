@@ -8,9 +8,7 @@ Blogger.Views.UsersIndex = Backbone.CompositeView.extend({
 	
 	initialize: function (options) {
 		this.userFollowCollection = options.userFollows;
-		
 		this.listenTo(this.collection, "sync", this.render);
-		this.listenTo(this.userFollowCollection, "sync", this.addUserFollow)
 	},
 	
 	// list_user: function(event) {
