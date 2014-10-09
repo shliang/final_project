@@ -11,12 +11,12 @@ module Api
     end
     
     # def index
-    #   if params[:user_id]
-    #     @posts = User.find(params[:user_id]).posts
-    #     render "posts/index"
-    #   else
-    #     render json: "don't know if i will use this"
-    #   end
+   #    if params[:user_id]
+   #      @posts = User.find(params[:user_id]).posts
+   #      render "posts/index"
+   #    else
+   #      render json: "don't know if i will use this"
+   #    end
       
       # @posts = Post.joins(:user).where('posts.owner_id IN (?)',
             # ([current_user.id] + current_user.followees.pluck(:id)))
