@@ -1,5 +1,6 @@
 Blogger.Models.User = Backbone.Model.extend({
 	urlRoot: "api/users",
+	
 	userFollows: function () {
 		return Blogger.Collections.userFollows
 	},
@@ -21,7 +22,7 @@ Blogger.Models.User = Backbone.Model.extend({
 	
 	parse: function(payload) {
 		if (payload.posts) {
-			this.posts().set(payload.posts, {remove: false, silent: true});
+			this.posts().set(payload.posts, {parse: true, remove: false, silent: true});
 			delete payload.posts;
 		} 
 		
@@ -41,9 +42,10 @@ Blogger.Models.User = Backbone.Model.extend({
 		}
 		
 		if (payload.user_posts) {
-			this.userPosts().set(payload.user_posts); //this will trigger both add and sync event on collection.
+			this.userPosts().set(payload.user_posts);
 			delete payload.user_posts;
 		}
+		
 		return payload
 	}
 })

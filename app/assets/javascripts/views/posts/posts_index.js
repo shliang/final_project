@@ -36,6 +36,40 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 		);
 	},
 	
+	events: {
+		"click button#update-picture" : "updatePicture",
+		"change input#filepicker-1" : "reRenderPicture"
+	},
+	
+	updatePicture: function (event) {
+		event.preventDefault();
+		
+		var user = this.followeesCollection.get(current_user_id),
+				image_url = this.$("input#filepicker-1").val(),
+				view = this;
+		
+		if (image_url == "") {
+			this.$("div.alert-danger").remove();
+			var $div = $('<div class="alert alert-danger"></div');
+			this.$("div.picture-update").append($div.html("please choose a picture"));
+		} else {
+			$("div.modal-backdrop").remove();
+			user.save({image_url: image_url}, {
+				success: function () {
+					current_user_imgURL = image_url;
+					view.render();
+				}
+			})
+		}
+	},
+	
+	reRenderPicture: function (event) {
+		event.preventDefault();
+		this.$("div.alert-danger").remove();
+		var image_url = this.$("input[type=filepicker]").val();
+		this.$("img#profile-pic").attr("src", image_url);
+	},
+	
 	addPost: function (post) {
 		var user = 
 			this.followeesCollection.findWhere({id: post.get("owner_id")}) ||
@@ -96,8 +130,11 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 	},
 	
 	render: function () {
-		var renderedContent = this.template();
+		var renderedContent = this.template({
+			user: this.followeesCollection.get(current_user_id)
+		});
 		this.$el.html(renderedContent);
+		filepicker.constructWidget(this.$("input[type=filepicker]")[0]);
 		this.renderPosts();
 		this.renderForm();
 		this.renderRecUsers();

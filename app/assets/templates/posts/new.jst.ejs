@@ -1,9 +1,13 @@
 <form>
-	<input type="text" name="post[title]" id="post_title" placeholder= "Place your post title here" class='form-control'>
-	<p></p>
+	<div class="form-group">
+	<input type="text" name="post[title]" id="post_title" placeholder= "Place your post title here (optional)" class='form-control'>
+	</div>
+	<div class="form-group">
 	<textarea rows="4" cols="100" placeholder="Describe your post here..." name="post[content]" id="post_content" class='form-control'></textarea>
-	<p></p>
+</div>
+
   <button class="btn btn-primary btn-lg" id="submit" style="float: left"> Create Post </button>
 	<a href="#" id="close" class="btn btn-danger btn-lg active" style="float: right;">&times;</a>
+
 </form>
 

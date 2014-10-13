@@ -20,7 +20,7 @@ module Api
       @comment = Comment.find(params[:id])
 
       if @comment.update_attributes(comment_params)
-        render @comment
+        render json: @comment
       else
         render json: @comment.errors.full_messages,  status: :unprocessable_entity
       end

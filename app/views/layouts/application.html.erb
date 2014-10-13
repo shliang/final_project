@@ -23,7 +23,7 @@
 			      <% if current_user %>
 				      <li> <a href="#"> Home </a> </li>
 			        <li> <a href="#/users"> Users </a> </li>
-			        <li> <a href="#/users/<%= current_user.id %>"> Setting </a> </li>
+			        <li> <a href="#"> Setting </a> </li>
 					    <li>
 									<%= button_to "Sign Out", session_url, :method => :delete, 
 										class:'btn btn-sm btn-danger navbar-btn sign-out-button' %>

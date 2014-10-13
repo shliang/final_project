@@ -11,6 +11,8 @@ Blogger.Collections.Posts = Backbone.Collection.extend({
 					this.add(post)
 				}.bind(this)
 			})
+		} else {
+			post.fetch();	
 		}
 		return post;
 	},

@@ -1,19 +1,33 @@
 <div class="panel-body padding-top-off">
   <span><%= user.escape("username") %></span>
-	<h4><%= post.escape('title') %></h4>
+	<h3>
+		<a href="#/posts/<%= post.id %>">
+			<%= post.escape('title') %>
+		</a>
+	</h3>
+	
+	<% if (post.get("image_url")) { %>
+		<div>
+			<img src="<%= post.escape("image_url") %>" height="100%" width="100%">
+		</div>
+		<p></p>
+	<% } %>
+	
+	
 	<p> <%= post.escape('content') %></p>
 	
-	<% if (user.id === current_user_id) { %>
+	<% if (user.id === current_user_id && showButton) { %>
 		<div class="edit div-inline-block">
 			<a href="#" class="edit">
-				<img src="http://www.houseonthehill.com/images/newicon/settings.png"
+				<img src="https://www.filepicker.io/api/file/mKIJZZ5qTfSEekDp5Ce1"
+					alt="edit"
 					heigth="24px"
 					width="24px">
 			</a>
 		</div>
 	<% } %>
 
-	<% if (user.id != current_user_id) { %>
+	<% if (user.id != current_user_id && showButton) { %>
 		<div class="comments  div-inline-block">
 			<a href="#/posts/<%= post.id %>">
 				<img src="http://www.clker.com/cliparts/0/5/d/0/1194994515522118165comment.svg.med.png"
@@ -22,11 +36,7 @@
 			</a>
 		</div>
 	<% } %>			
-
-	<div class="like div-inline-block">
-		<img src="http://www.clker.com/cliparts/6/X/w/g/G/R/salmon-heart-md.png"
-			heigth="24px"
-			width="24px">
-	</div>
+	
+	<div class="like div-inline-block"></div>
 	
 </div>

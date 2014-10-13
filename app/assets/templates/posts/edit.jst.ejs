@@ -1,15 +1,38 @@
 <form class="submitting">
-  <label> Post Title </label>
-	<input type="text" name="post[title]" id="post_title", value="<%= post.escape("title") %>" class='form-control'>
+	<% if (post.get("title")) { %>
+		<div class="form-group">
+		  <label for="post_title"> Post Title </label>
+			<input type="text" name="post[title]" id="post_title" 
+				value="<%= post.escape("title") %>" class='form-control'>
+		</div>
+	<% } %>
 	
-	<p></p>
+	<% if (post.get("image_url")) { %>
+		<div class="form-group">
+			<div class="edit-pic">
+				<img id="edit-pic" src="<%= post.escape("image_url") %>" height="100%" width="100%">
+			</div>
+		</div>
+		
+		<input
+			id="<%=filepickerID%>"
+			type="filepicker" 
+			name="post[image_url]"
+			data-fp-mimetype="image/*"
+			data-fp-button-text="Change Image"
+			data-fp-button-class="btn btn-default"
+			data-fp-services="COMPUTER">
+	<% } %>
 	
-	<label> Post Body </label>
-	<textarea rows="4" cols="100" name="post[content]" id="post_content" class='form-control'> <%= post.escape("content") %> </textarea>
 	
-	<p></p>
+	<div class="form-group">
+		<label> Post Body </label>
+			<textarea rows="4" cols="100" name="post[content]" id="post_content" class='form-control'><%=post.escape("content")%></textarea>
+	</div>
+	
+	<div class="form-group">
+	  <button class="btn btn-info save"> Save </button>
+		<button class="btn btn-warning cancel"> Cancel </button>
+		<button class="btn btn-danger destroy" > Destroy </button>
+	</div>
 </form>
-
-  <button class="btn btn-info save"> Save </button>
-	<button class="btn btn-warning cancel"> Cancel </button>
-	<button class="btn btn-danger destroy" > Destroy </button>

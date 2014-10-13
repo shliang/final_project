@@ -4,7 +4,7 @@
 <% users.each(function (user) { %>
 	<div class="col-xs-3">
 		<a href="#/users/<%= user.id %>">
-			<img src="<%= user.escape("image_url") %>" height="100%" width="100%"></img>
+			<img src="<%= user.escape("image_url") %>" height="203px" width="100%" class="img-circle"></img>
 		</a>
 		<span id="user-index-<%= user.id %>"></span>
 	</div>	

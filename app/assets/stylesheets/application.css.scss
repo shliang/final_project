@@ -52,13 +52,13 @@ body {
 }
 
 .header-nav {
-	width: 1000px;
+	width: 900px;
 	margin:0 auto;
 	padding:0;
 }
 
 div.container {
-	width: 1000px;
+	width: 900px;
 	text-align: left;
 	margin:0 auto;
 	padding:0;
@@ -84,7 +84,6 @@ form.submitting {
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 a {
@@ -93,13 +92,26 @@ a {
 }
 
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
+	color: green;
 }
 
-h2 {
-	margin-top: 0px;
-} // need to fix modification to h2 and h4
+.hide {
+	display: none;
+}
 
-h4 {
-	font-size:25px;
+h3 {
+	color: white;
+}
+
+div.alert-danger {
+  margin-bottom: 0px;
+  padding-bottom: 3px;
+}
+
+.zero-padding {
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-bottom: 0px;
 }

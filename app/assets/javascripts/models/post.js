@@ -6,15 +6,13 @@ Blogger.Models.Post = Backbone.Model.extend({
 			new Blogger.Collections.Comments(
 				[], { post: this }
 			)
-		return this_comments
+		return this._comments;
 	},
 	
-	likes: function () {
-		this._likes = this._likes ||
-			new Blogger.Collections.Likes(
-				[], { post: this }
-			)
-		return this._likes
+	likedUsers: function () {
+		this._likeUsers = this._likeUsers ||
+			new Blogger.Collections.Users();
+		return this._likeUsers
 	},
 	
 	user: function () {
@@ -25,13 +23,31 @@ Blogger.Models.Post = Backbone.Model.extend({
 		return this._user;
 	},
 	
+	likes: function () {
+		this._likes = this._likes ||
+			new Blogger.Collections.Likes ()
+		return this._likes
+	},
+	
 	parse: function (response) {
 		if (response.comments) {
-			this.comments().set(response.comments)
+			this.comments().set(response.comments, { parse: true })
+			delete response.comments;
 		} 
 		
+		if (response.liked_users) {
+			this.likedUsers().set(response.liked_users)
+			delete response.liked_users;
+		}
+		
 		if (response.likes) {
-			this.likes().set(response.likes)
+			this.likes().set(response.likes);
+			delete response.likes;
+		}
+		
+		if (response.user) {
+			this.user().set(response.user);
+			delete response.user
 		}
 		
 		return response

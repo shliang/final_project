@@ -9,7 +9,8 @@ Blogger.Views.ImagePostShow = Backbone.CompositeView.extend({
 	renderPost: function () {
 		var postShowView = new Blogger.Views.PostsShow({
 			model : this.model,
-			user: this.author
+			user: this.author,
+			buttons: true
 		});
 		
 		this.addSubview("div.only-post", postShowView);

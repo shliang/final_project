@@ -4,18 +4,19 @@ Blogger::Application.routes.draw do
   
   namespace :api, defaults: { format: :json } do
     
-    resources :posts, only: [:index, :create, :update, :destroy, :show] do
+    resources :posts, only: [:create, :update, :destroy, :show] do
       resources :comments, only: [:index]
     end
     
-    resources :users, only: [:index, :show] do
-      get :userfollows, on: :collection
+    resources :comments, only: [:create, :update, :destroy]
+    
+    resources :users, only: [:index, :show, :update] do
       get :followees, on: :collection
-      resources :posts, only: [:index]
+      get :followers, on: :collection
     end
     
+    resources :likes, only: [:create, :destroy, :index]
     resources :userfollows, only: [:create, :destroy, :index]
-    resources :comments, only: [:create, :update, :destroy]
   end
   
   resources :users, only: [:new, :create]

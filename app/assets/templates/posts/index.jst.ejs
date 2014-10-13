@@ -27,15 +27,85 @@
 	  <a href="#/users/<%= current_user_id %>" class="list-group-item">
 			Posts
 		</a>
-	  <a href="#" class="list-group-item">
+	  <a href="#/followers" class="list-group-item">
 			Followers
 		</a>
-	  <a href="#" class="list-group-item">Liked Posts</a>
-	  <a href="#" class="list-group-item">Customize</a>
+	  <!-- <a href="#" class="list-group-item">Liked Posts</a> -->
+	  <a href="#" class="list-group-item" data-toggle="modal" data-target="#setting">
+			Customize
+		</a>
 	</div>
 	<hr>
 	<div class="recommende-users">
 		<h3 ><font color="white">Recommended Users</font></h3>
 		<ul id="user-follows" class="list-group" ></ul>
 	</div>
+</div>
+
+
+
+<!--followers modal -->
+
+<div class="modal fade" id="followers" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--setting modal -->
+
+<div class="modal fade" id="setting" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				
+        <h4 class="modal-title"><%= user ? user.escape("username") : "" %></h4>
+      </div>
+      <div class="modal-body">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-4 picture-show">
+								<img id="profile-pic" 
+									src="<%= user ? user.escape("image_url") : "" %>"
+									height="100%"
+									width="100%"
+								>
+							</div>
+							
+							<div class="col-xs-3 picture-update">
+								<form>
+									<h4>Change Profile Picture</h4>
+									<input
+										id="filepicker-1"
+										type="filepicker" 
+										name="user[image_url]"
+										data-fp-mimetype="image/*"
+										data-fp-services="COMPUTER">
+									
+									<button id="update-picture">Update Picture</button>
+								</form>
+							</div>
+						</div>
+					</div>
+      </div>
+    </div>
+  </div>
 </div>

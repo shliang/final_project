@@ -10,20 +10,6 @@ module Api
       end
     end
     
-    # def index
-   #    if params[:user_id]
-   #      @posts = User.find(params[:user_id]).posts
-   #      render "posts/index"
-   #    else
-   #      render json: "don't know if i will use this"
-   #    end
-      
-      # @posts = Post.joins(:user).where('posts.owner_id IN (?)',
-            # ([current_user.id] + current_user.followees.pluck(:id)))
-      # render json: @posts, include: :user
-      # render "posts/index"
-    # end
-    
     def destroy
       @post = current_user.posts.find(params[:id])
       @post.destroy if @post
@@ -32,7 +18,6 @@ module Api
     
     def show
       @post = Post.find(params[:id])
-      @user = @post.user
       render "posts/show"
     end
     
@@ -51,7 +36,7 @@ module Api
     private
     
     def post_params
-      params.require(:post).permit(:content, :title)
+      params.require(:post).permit(:content, :title, :image_url)
     end
     
   end

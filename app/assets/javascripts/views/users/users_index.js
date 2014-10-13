@@ -32,12 +32,12 @@ Blogger.Views.UsersIndex = Backbone.CompositeView.extend({
 		});
 		
 		this.$el.html(renderedContent);
-		this.addUserFollow();
+		this.renderUserFollow();
 		
 		return this;
 	},
 	
-	renderUserFollow: function (user) {
+	addUserFollow: function (user) {
 		$('span#user-index-' + user.id).empty();
 		var following = Blogger.Collections.userFollows.track(user);
 		
@@ -50,8 +50,8 @@ Blogger.Views.UsersIndex = Backbone.CompositeView.extend({
 		this.addSubview('span#user-index-' + user.id, followsShowView);
 	},
 	
-	addUserFollow: function () {
-		this.collection.each (this.renderUserFollow.bind(this))
+	renderUserFollow: function () {
+		this.collection.each (this.addUserFollow.bind(this))
 	}
 	
 	// renderUsers: function() {

@@ -1,0 +1,13 @@
+<div class="panel-body">
+  <%= comment.escape("content") %>
+	
+	<% if (comment.escape("author_id") == current_user_id) { %>
+		<div class="edit div-inline-block">
+			<a href="#" class="edit">
+				<img src="http://icons.iconarchive.com/icons/double-j-design/diagram-free/128/settings-icon.png"
+					heigth="24px"
+					width="24px">
+			</a>
+		</div>
+	<% } %>
+</div>

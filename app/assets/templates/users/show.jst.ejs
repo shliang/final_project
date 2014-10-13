@@ -2,12 +2,13 @@
 	<a href="#/users/<%= user.id %>">
 		<img src="<%= user.escape("image_url") %> " class="img-rounded" height="130px" width="130px">
 	</a>
-	<h4><%= user.escape("username") %></h4>
+	<h2><%= user.escape("username") %></h2>
 </div>
 
 <% posts.each(function (post) { %>
 	<div class="row">
 		<div class="col-xs-1" style="padding-left: 0; padding-right:0;">
+			<p></p>
 			<a href="#/posts/<%= post.id %>">
 				<%= new Date(post.escape("updated_at")).toDateString() %>
 			</a>
@@ -15,10 +16,17 @@
 		
 		<div class="col-xs-11" style="padding-top:0">
 			<div class="panel panel-default">
-				<div class="panel-body">
+				<div class="panel-body padding-top-off">
 					 <a href="#/posts/<%= post.id %>">
 						 <h2><%= post.escape('title') %></h2>
 					 </a>
+					 
+				 	<% if (post.get("image_url")) { %>
+				 		<div>
+				 			<img src="<%= post.escape("image_url") %>" height="100%" width="100%">
+				 		</div>
+				 	<% } %>
+					
 					<p> <%= post.escape('content') %></p>
 				</div>
 			</div>

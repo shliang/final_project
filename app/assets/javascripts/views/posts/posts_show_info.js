@@ -6,54 +6,68 @@ Blogger.Views.PostsShowInfo = Backbone.CompositeView.extend({
 		this.listenTo(this.model, "sync", this.render);
 		
 		this.comments = this.model.comments();
-		this.likes = this.model.likes();
+		this.likedUsers = this.model.likedUsers();
+		this.author = this.model.user();
+		
+		this.listenTo(this.comments, "add", this.addComment);
+		this.listenTo(this.comments, "remove", this.removeComment);
 	},
 	
 	renderPost: function () {
-		var user;
-		if (this.model.user().get("image_url")) {
-			user = this.model.user();
-		} else {
-			user = new Blogger.Models.User();
-		}
-		
 		var postShowView = new Blogger.Views.PostsShow ({
-			post: this.model,
-			user: this.user
+			model: this.model,
+			user: this.author
 		})
 		
 		this.addSubview("div.post-show", postShowView);
 	},
 	
 	addComment: function (comment) {
-		var commentShowView = new Blogger.Views.CommentsShow ({
-			model: comment // fetch for user img as well?
+		var commentsShowView = new Blogger.Views.ImageCommentShow ({
+			model: comment,
+			post: this.model
 		});
 		
-		this.addSubview("div.comments-show", commentShowView);
+		this.addSubview("div.comments-show", commentsShowView);
 	},
 	
 	renderComments: function () {
-		this.comments.each (this.addComment.bind(this));
+		this.comments.each(this.addComment.bind(this));
 	},
 	
-	addLike: function (like) {
-		var likeShowView = new Blogger.Views.LikesShow ({
-			model: like // fetch for user img as well?
+	renderForm: function () {
+		var commentsNewView = new Blogger.Views.CommentsNew ({
+			post: this.model
 		});
 		
-		this.addSubview("div.likes-show", likeShowView);
+		this.addSubview("comment-new", commentsNewView);
 	},
 	
-	renderLikes: function () {
-		this.likes.each (this.addLike.bind(this));
+	removeComment: function (model) {
+		var id = "#comment-" + model.id;
+		$(id).parent().remove();
 	},
 	
+	renderForm: function () {
+		var commentNewView = new Blogger.Views.CommentsNew ({
+			post: this.model
+		});
+		
+		this.addSubview("div.comment-new", commentNewView);
+	},
 	
 	render: function () {
 		var renderedContent = this.template ({
-			
+			likedUsers: this.likedUsers,
+			post: this.model
 		});
+		
+		this.$el.html(renderedContent)
+		this.renderPost();
+		this.renderForm();
+		this.renderComments();
+		
+		return this;
 	}
 	
 })

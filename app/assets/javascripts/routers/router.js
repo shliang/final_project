@@ -2,11 +2,11 @@ Blogger.Routers.Router = Backbone.Router.extend({
 	
 	routes: {
 		'' : 'postsIndex', 
-		'posts/:id': 'postsShow', // shows a single post, this allows for commenting
-		"users" : "usersIndex", // shows pictures of all users, when clicked, takes to posts/user/:id, also has
-														// hover effect
-		'users/:id': 'usersShow', // shows posts that belongs to user with :id
-		'setting' : 'settingShow'
+		// 'posts/liked': 'likedPostsIndex',  implement this later
+		'posts/:id': 'postsShow',
+		"users" : "usersIndex", 
+		'users/:id': 'usersShow',
+		'followers': 'followersIndex'
 	},
 	
 	postsIndex: function () {
@@ -22,9 +22,9 @@ Blogger.Routers.Router = Backbone.Router.extend({
 	
 	postsShow: function (id) {
 		var post = Blogger.Collections.posts.getOrFetch(id);
-		
     var view  = new Blogger.Views.PostsShowInfo({
-      model: post
+      model: post,
+			likesCollection: Blogger.Collections.likes
     });
 		
 		this._swapView(view)
@@ -59,8 +59,13 @@ Blogger.Routers.Router = Backbone.Router.extend({
 		this._swapView(userShowView)
 	},
 	
-	settingShow: function () {
-		
+	followersIndex: function () {
+		Blogger.Collections.followers.fetch();
+		var view = new Blogger.Views.UsersIndex({
+			collection: Blogger.Collections.followers,
+			userFollows: Blogger.Collections.userFollows
+		});
+		this._swapView(view)
 	},
 	
 	_swapView: function (view) {

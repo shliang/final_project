@@ -1,0 +1,25 @@
+<form>
+	<div class="image">
+		<img id="maybe-pic" src="https://www.filepicker.io/api/file/1v9jJU85R3Ga8AfoGh0N" height="100%" width="100%">
+		<p></p>
+	</div>
+		
+	<div class="form-group">
+		<input
+			id="filepicker-pic-2"
+			type="filepicker" 
+			name="post[image_url]"
+			data-fp-mimetype="image/*"
+			data-fp-button-text="Choose Image"
+			data-fp-button-class="btn btn-default"
+			data-fp-services="COMPUTER">
+	</div>
+	
+	<div class="form-group">
+	<textarea rows="4" cols="100" placeholder="Please provide caption here..." name="post[content]" id="post_content" class='form-control'></textarea>
+</div>
+
+  <button class="btn btn-primary btn-lg" id="submit" style="float: left"> Create Post </button>
+	<a href="#" id="close" class="btn btn-danger btn-lg active" style="float: right;">&times;</a>
+
+</form>
