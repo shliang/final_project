@@ -51,7 +51,7 @@ User.find_by_username("Marcella").posts.create!(image_url: "http://r001.joyme.co
 User.find_by_username("Julie").posts.create!(image_url: "http://media.giphy.com/media/viXsYok1yHgS4/giphy.gif", content: "I need this every day in the morning")
 User.find_by_username("Mattie").posts.create!(image_url: "https://www.filepicker.io/api/file/6iKP12vlRRCTKSmOYuKO", content: "Will be there cute marshmallows in trick-or-treat")
 
-Posts.all.each do |post|
+Post.all.each do |post|
   User.all.sample(5).each do |user|
     user.likes.create(post_id: post.id)
   end
