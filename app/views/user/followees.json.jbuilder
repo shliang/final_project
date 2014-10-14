@@ -9,5 +9,6 @@ json.array!(@users) do |user|
 	json.recom_users(user.recom_users, :id, :username, :created_at, :updated_at, :image_url) if user  == current_user
 	
 	json.followers(user.followers, :id, :username, :created_at, :updated_at, :image_url) if current_user == user
-
+	
+	json.user_follows(current_user.user_follows, :id, :follower_id, :followee_id) if user == current_user
 end

@@ -18,11 +18,6 @@ module Api
       render "user/followees"
     end
     
-    def followers
-      @followers = current_user.followers + [current_user]
-      render "user/followers"
-    end
-    
     def show
       @user = User.find(params[:id])
       @posts = @user.posts

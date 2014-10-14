@@ -34,6 +34,12 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 			"remove",
 			this.removePost
 		);
+		
+		this.listenTo(
+			Blogger.Collections.recommendedUsers,
+			"remove",
+			this.renderRecUsers
+		)
 	},
 	
 	events: {
@@ -54,6 +60,7 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 			this.$("div.picture-update").append($div.html("please choose a picture"));
 		} else {
 			$("div.modal-backdrop").remove();
+			$("body.modal-open").attr("class", "modal-close")
 			user.save({image_url: image_url}, {
 				success: function () {
 					current_user_imgURL = image_url;
@@ -116,6 +123,7 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 	},
 	
 	renderRecUsers: function () {
+		this.$("ul#user-follows").empty();
 		var view = this;
 		Blogger.Collections.recommendedUsers.each( function (user) {
 			
@@ -129,6 +137,14 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 		})
 	},
 	
+	renderFollowers: function () {
+		var followersView = new Blogger.Views.UsersIndex ({
+			collection: Blogger.Collections.followers
+		});
+		
+		this.addSubview("div.followers-modal", followersView);
+	},
+	
 	render: function () {
 		var renderedContent = this.template({
 			user: this.followeesCollection.get(current_user_id)
@@ -138,6 +154,7 @@ Blogger.Views.PostsIndex = Backbone.CompositeView.extend({
 		this.renderPosts();
 		this.renderForm();
 		this.renderRecUsers();
+		this.renderFollowers();
 		return this;
 	}
 })

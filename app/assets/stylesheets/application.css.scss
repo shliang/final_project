@@ -80,6 +80,11 @@ div.padding-top-off {
 	padding-top: 0;
 }
 
+div.top-bottom-padding {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
 form.submitting {
   padding-left: 10px;
   padding-right: 10px;
@@ -114,4 +119,12 @@ div.alert-danger {
   padding-right: 0px;
   padding-left: 0px;
   padding-bottom: 0px;
+}
+
+div.modal-body {
+	background-color: PowderBlue;
+}
+
+div.modal-header {
+	background-color: Aquamarine;
 }

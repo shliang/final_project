@@ -13,7 +13,6 @@ Blogger.Views.PostsShow = Backbone.CompositeView.extend({
 		"click a.edit" : "editPost",
 		"click button.save" : "submitUpdate",
 		"click button.cancel" : "cancelEdit"
-		// "change input#filepicker-pic-3" : "reRenderPicture"
 	},
 
 	initialize: function (options) {

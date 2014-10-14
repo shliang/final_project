@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
   end
   
   def ensure_image_url
-    self.image_url ||= "http://www.inta37.org/images/symposium/peoples/default_user.png"
+    self.image_url ||= "https://www.filepicker.io/api/file/MkWLX61QQiiYoS0vSEMF"
   end
   
   def reset_session_token!

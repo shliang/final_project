@@ -2,9 +2,10 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-1" style="padding-left: 0; padding-right:0;">
-				<img src="<%= current_user_imgURL %>" 
-					class="img-rounded" height="100%" width="100%"
-				>
+				<a href="#/users/<%= current_user_id %>">
+					<img src="<%= current_user_imgURL %>" 
+					class="img-rounded" height="100%" width="100%">
+				</a>
 			</div>
 			<div class="col-xs-11">
 				<div class="panel panel-default">
@@ -27,7 +28,7 @@
 	  <a href="#/users/<%= current_user_id %>" class="list-group-item">
 			Posts
 		</a>
-	  <a href="#/followers" class="list-group-item">
+	  <a href="#" class="list-group-item" data-toggle="modal" data-target="#followers">
 			Followers
 		</a>
 	  <!-- <a href="#" class="list-group-item">Liked Posts</a> -->
@@ -47,22 +48,19 @@
 <!--followers modal -->
 
 <div class="modal fade" id="followers" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="width: 900px;">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">
 					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 				</button>
-				
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title">Follower</h4>
       </div>
-      <div class="modal-body">
+			
+      <div class="modal-body followers-modal">
         
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+   
     </div>
   </div>
 </div>
@@ -100,12 +98,23 @@
 										data-fp-mimetype="image/*"
 										data-fp-services="COMPUTER">
 									
-									<button id="update-picture">Update Picture</button>
 								</form>
+								<!-- <button id="update-picture">Update Picture</button> -->
 							</div>
+							
 						</div>
 					</div>
       </div>
+			
+			<div class="modal-footer">
+        <button type="button" class="btn btn-default"data-dismiss="modal">
+					Close
+				</button>
+        <button type="button" id="update-picture"class="btn btn-primary">
+					Update Picture
+				</button>
+			</div>
+			
     </div>
   </div>
 </div>

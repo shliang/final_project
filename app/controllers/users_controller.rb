@@ -8,6 +8,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in!(@user)
+      User.find_by_username("zenpost").user_follows.create(followee_id: @user.id)
+      @user.user_follows.create(followee_id: User.find_by_username("zenpost").id)
       redirect_to root_url
     else
       flash.now[:errors] = @user.errors.full_messages

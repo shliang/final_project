@@ -14,10 +14,10 @@
 	<% } %>
 	
 	
-	<p> <%= post.escape('content') %></p>
+	<p> <%= marked(post.escape('content')) %></p>
 	
 	<% if (user.id === current_user_id && showButton) { %>
-		<div class="edit div-inline-block">
+		<div class="edit div-inline-block" title="edit">
 			<a href="#" class="edit">
 				<img src="https://www.filepicker.io/api/file/mKIJZZ5qTfSEekDp5Ce1"
 					alt="edit"
@@ -28,7 +28,7 @@
 	<% } %>
 
 	<% if (user.id != current_user_id && showButton) { %>
-		<div class="comments  div-inline-block">
+		<div class="comments  div-inline-block" title="comment">
 			<a href="#/posts/<%= post.id %>">
 				<img src="http://www.clker.com/cliparts/0/5/d/0/1194994515522118165comment.svg.med.png"
 					heigth="24px"

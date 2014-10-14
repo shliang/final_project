@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.serializejson
+//= require marked.min
 //= require jquery_ujs
 //= require underscore
 //= require bootstrap

@@ -27,9 +27,27 @@
 				 		</div>
 				 	<% } %>
 					
-					<p> <%= post.escape('content') %></p>
+					<p> <%= marked(post.escape('content')) %></p>
 				</div>
 			</div>
 		</div>
 	</div>
 <% }) %>
+
+<% if (posts.length == 0) { %>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					
+					<img src="https://www.filepicker.io/api/file/ZRYvOocQStqbdoB6FX9W" 
+						alt="sad puppy"
+						height="100%"
+						width="100%">
+					<p></p>
+					<p>You currently don't have any posts.</p>
+					<p>
+						To create Posts, please go to <a href="#"><b>home page<b></a>
+					</p>
+				</div>
+			</div>
+
+<% } %>

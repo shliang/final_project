@@ -31,7 +31,6 @@ Blogger.Views.FollowsShow = Backbone.View.extend({
 			success: function () {
 				view.follow = false;
 				view.render()
-				// Blogger.Collections.recommendedUsers.add(view.model);
 				Blogger.Collections.followees.remove(view.model);
 			}
 		})
@@ -47,7 +46,7 @@ Blogger.Views.FollowsShow = Backbone.View.extend({
 		newFollow.set({follower_id: current_user_id, followee_id: followeeID});
 		newFollow.save({}, {
 			success: function () {
-				// Blogger.Collections.recommendedUsers.remove(view.model);
+				Blogger.Collections.recommendedUsers.remove(view.model);
 				
 				Blogger.Collections.userFollows.add(newFollow);
 				Blogger.Collections.followees.add(view.model);

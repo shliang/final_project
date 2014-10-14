@@ -1,4 +1,4 @@
-Blogger.Views.UsersShow = Backbone.CompositeView.extend({
+Blogger.Views.UsersShow = Backbone.View.extend({
 	template: JST["users/show"],
 	className: "user-content",
 	initialize: function(options) {

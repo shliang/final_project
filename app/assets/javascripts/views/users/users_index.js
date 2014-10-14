@@ -7,8 +7,9 @@ Blogger.Views.UsersIndex = Backbone.CompositeView.extend({
 // 	},
 	
 	initialize: function (options) {
-		this.userFollowCollection = options.userFollows;
 		this.listenTo(this.collection, "sync", this.render);
+		this._listShow = options.listShow;
+		this._listShowing = false;
 	},
 	
 	// list_user: function(event) {
@@ -27,8 +28,10 @@ Blogger.Views.UsersIndex = Backbone.CompositeView.extend({
 	
 	
 	render: function () {
+		// maybe calling this.remove() to remove zombie that might arise from swapping view?
 		var renderedContent = this.template({
-			users: this.collection
+			users: this.collection,
+			listShow: this._listShow
 		});
 		
 		this.$el.html(renderedContent);

@@ -5,8 +5,7 @@ Blogger.Routers.Router = Backbone.Router.extend({
 		// 'posts/liked': 'likedPostsIndex',  implement this later
 		'posts/:id': 'postsShow',
 		"users" : "usersIndex", 
-		'users/:id': 'usersShow',
-		'followers': 'followersIndex'
+		'users/:id': 'usersShow'
 	},
 	
 	postsIndex: function () {
@@ -35,7 +34,8 @@ Blogger.Routers.Router = Backbone.Router.extend({
 		
 		var view = new Blogger.Views.UsersIndex({
 			collection: Blogger.Collections.users,
-			userFollows: Blogger.Collections.userFollows
+			userFollows: Blogger.Collections.userFollows,
+			listShow: true
 		});
 		this._swapView(view)
 	},
@@ -57,15 +57,6 @@ Blogger.Routers.Router = Backbone.Router.extend({
 		});
 		
 		this._swapView(userShowView)
-	},
-	
-	followersIndex: function () {
-		Blogger.Collections.followers.fetch();
-		var view = new Blogger.Views.UsersIndex({
-			collection: Blogger.Collections.followers,
-			userFollows: Blogger.Collections.userFollows
-		});
-		this._swapView(view)
 	},
 	
 	_swapView: function (view) {
