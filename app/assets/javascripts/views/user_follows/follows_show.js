@@ -32,6 +32,9 @@ Blogger.Views.FollowsShow = Backbone.View.extend({
 				view.follow = false;
 				view.render()
 				Blogger.Collections.followees.remove(view.model);
+				debugger
+				var userPosts = Blogger.Collections.posts.where({owner_id: view.model.id});
+				Blogger.Collections.posts.remove(userPosts);
 			}
 		})
 	},
