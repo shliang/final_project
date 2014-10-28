@@ -91,6 +91,14 @@ form.submitting {
   padding-top: 10px;
 }
 
+.white-font a {
+	color: white;
+}
+
+.white-font label {
+	color: white;
+}
+
 a {
 	color: #000000; 
 	text-decoration: none;
@@ -115,10 +123,7 @@ div.alert-danger {
 }
 
 .zero-padding {
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-left: 0px;
-  padding-bottom: 0px;
+  padding: 0;
 }
 
 div.modal-body {
@@ -127,4 +132,13 @@ div.modal-body {
 
 div.modal-header {
 	background-color: Aquamarine;
+}
+
+.main-body {
+	position: relative;
+	top: 200px;
+}
+
+.main-body ul {
+	list-style-type: none;
 }

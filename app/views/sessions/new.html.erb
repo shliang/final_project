@@ -1,21 +1,19 @@
 <div class="row main-body">
 	<div class='col-xs-4 col-xs-offset-4 text-center'>
 		
-		<br><br><br><br><br><br><br>
-		
 		<form action="<%= session_url %>" method="POST">
-			<div class="form-group">
+			<div class="form-group white-font">
 			  <input
 			     name="authenticity_token"
 			     type="hidden"
 			     value="<%= form_authenticity_token %>">
 	
-				<label for="user_name"> <font color="white"> User Name </font> </label>
+				<label for="user_name"> User Name </label>
 				<input type="text" name="user[username]" class='form-control' id="user_name">
 			
 				<br>
 	
-				<label for="user_password"> <font color="white"> Password </font> </label>
+				<label for="user_password"> Password </label>
 				<input type="password" name="user[password]" class='form-control' id="user_password">
 	
 			<br>
