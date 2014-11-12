@@ -9,17 +9,17 @@
 
 <script>
 	$(function() {
-		$("form#post-search").keypress(function(event) {
+		$("#post-search").keypress(function(event) {
 			event.preventDefault();
 	    if (event.which == 13) {
 	    	alert('Sorry, still under development');
 			}
 		})
 	});
-</script>
 
-<script>
 	$(Blogger.initialize);
 	$("body").css('background-color', "SteelBlue");
 	$("body").css('background-image', "none");
+	var preloadImage = new Image();
+	preloadImage.src = "https://www.filepicker.io/api/file/1v9jJU85R3Ga8AfoGh0N";
 </script>
