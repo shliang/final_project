@@ -12,6 +12,11 @@ Backbone.UsersCollection = Backbone.Collection.extend({
 			});
 		} 
 		return user;
+	},
+	
+	comparator: function (user) {
+		var date = new Date(user.get("created_at"))
+		return date
 	}
 })
 
