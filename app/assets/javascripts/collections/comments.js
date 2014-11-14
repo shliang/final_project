@@ -13,19 +13,4 @@ Blogger.Collections.Comments = Backbone.Collection.extend({
 		var date = new Date(comment.get("updated_at"))
 		return date
 	}
-	// getOrFetch: function (id) {
-	// 	var comment = this.get(id);
-	// 	if (!comment) {
-	// 		comment = new this.model({id: id});
-	// 		comment.fetch({
-	// 			success: function(){
-	// 				this.add(comment)
-	// 			}.bind(this)
-	// 		});
-	// 	} else {
-	// 		comment.fetch();
-	// 	}
-	// 	return comment;
-	// },
-	
 })

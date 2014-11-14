@@ -6,11 +6,7 @@ Blogger.Collections.Posts = Backbone.Collection.extend({
 		var post = this.get(id);
 		if (!post) {
 			post = new this.model({id: id});
-			post.fetch({
-				success: function(){
-					this.add(post)
-				}.bind(this)
-			})
+			post.fetch()
 		} else {
 			post.fetch();	
 		}
