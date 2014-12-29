@@ -1,6 +1,6 @@
 <a href="#/users/<%= user.id %>" id=<%= user.id %>> <%= user.escape("username")%> </a>
 <% if (follow === true) { %>
-	<button class="unfollowing btn btn-warning" 
+	<button class="unfollowing btn btn-warning follow-button" 
 		data-id="<%=user.id%>" 
 		style="float: right" 
 		type="button" 
@@ -8,7 +8,7 @@
 			&minus;
 		</button>
 <% } else { %>
-	<button class="new-following btn btn-success" 
+	<button class="new-following btn btn-success follow-button" 
 		data-id="<%=user.id%>" 
 		style="float: right"
 		title="Follow">
