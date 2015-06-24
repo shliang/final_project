@@ -9,5 +9,5 @@ Some of the implementations in building this app include:
 * Custom CompositeView class with overridden #remove method to delete nested subviews recursively
 
 ###TODO
-* Fix search post funtionality
+* ~~Fix search user funtionality~~
 * Allow users to embed videos
